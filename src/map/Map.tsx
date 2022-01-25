@@ -1,7 +1,7 @@
 import {GeoJSON, MapContainer, TileLayer, Tooltip, useMap} from 'react-leaflet';
 import L, {IconOptions, LatLng} from 'leaflet';
 import {useEffect, useState} from "react";
-import {bbox, featureCollection} from "@turf/turf";
+import {bbox, featureCollection, GeoJSONObject} from "@turf/turf";
 
 
 interface MapProps {
@@ -22,23 +22,23 @@ const blueMarker = (geoJsonPoint:any, latlng: LatLng) => {
 }
 
 export default function Map(props:MapProps) {
-    const [geoJsonComponent, setGeoJsonComponent] = useState(<></>);
+    const [geoJsonComponent, setGeoJsonComponent] = useState([<></>]);
     const map = useMap();
 
     useEffect(() => {
         if (props.geoJson === null) {
-            setGeoJsonComponent(<></>);
+            setGeoJsonComponent([<></>]);
             return;
         }
-        const allBounds = bbox(props.geoJson);
+        const allBounds = bbox(featureCollection(props.geoJson));
         map.fitBounds([[allBounds[1], allBounds[0]], [allBounds[3], allBounds[2]]]);
 
-        setGeoJsonComponent( (<GeoJSON
-            key='1'
-            data={props.geoJson}
+        setGeoJsonComponent( props.geoJson.map( (data:any, index:number) => (<GeoJSON
+            key={index}
+            data={data}
             pointToLayer={blueMarker}
             style={{color: 'blue'}}
-        ><Tooltip>Hello</Tooltip></GeoJSON>) );
+        ><Tooltip>Hello</Tooltip></GeoJSON>) ));
     }, [props.geoJson, map]);
 
     return (

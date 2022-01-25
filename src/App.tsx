@@ -3,7 +3,7 @@ import './App.css';
 import LeafletMapContainer from "./map/LeafletMapContainer";
 
 
-const geoJsonData = {
+const geoJsonData = [{
     type: "Feature",
     geometry: {
         type: "Polygon",
@@ -17,7 +17,7 @@ const geoJsonData = {
             ]
         ]
     }
-};
+}];
 
 function App() {
   return (
