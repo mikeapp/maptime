@@ -7,7 +7,7 @@ interface MapProps {
 
 export default function LeafletMapContainer(props:MapProps) {
     return (
-        <MapContainer  zoom={3}  className='LeafletContainer'>
+        <MapContainer zoom={3}  className='LeafletContainer'>
             <Map geoJson={props.geoJson} />
         </MapContainer>
     );
