@@ -1,6 +1,8 @@
-import {GeoJSON, MapContainer, TileLayer, Tooltip} from 'react-leaflet';
+import {GeoJSON, MapContainer, TileLayer, Tooltip, useMap} from 'react-leaflet';
 import L, {IconOptions, LatLng} from 'leaflet';
 import {useEffect, useState} from "react";
+import {bbox, featureCollection} from "@turf/turf";
+
 
 interface MapProps {
     geoJson:any
@@ -21,24 +23,29 @@ const blueMarker = (geoJsonPoint:any, latlng: LatLng) => {
 
 export default function Map(props:MapProps) {
     const [geoJsonComponent, setGeoJsonComponent] = useState(<></>);
+    const map = useMap();
+
     useEffect(() => {
         if (props.geoJson === null) {
             setGeoJsonComponent(<></>);
             return;
         }
+        const allBounds = bbox(props.geoJson);
+        map.fitBounds([[allBounds[1], allBounds[0]], [allBounds[3], allBounds[2]]]);
+
         setGeoJsonComponent( (<GeoJSON
             key='1'
             data={props.geoJson}
             pointToLayer={blueMarker}
             style={{color: 'blue'}}
         ><Tooltip>Hello</Tooltip></GeoJSON>) );
-    }, [props.geoJson]);
+    }, [props.geoJson, map]);
 
     return (
-        <MapContainer center={[0, 0]} zoom={3} className='LeafletContainer'>
+        <>
             <TileLayer
                 url="https://tile.openstreetmap.org/{z}/{x}/{y}.png" />
             {geoJsonComponent}
-        </MapContainer>
+        </>
     );
 }
