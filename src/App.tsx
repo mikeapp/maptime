@@ -1,32 +1,47 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import './App.css';
 import LeafletMapContainer from "./map/LeafletMapContainer";
-
-
-const geoJsonData = [{
-    type: "Feature",
-    geometry: {
-        type: "Polygon",
-        coordinates: [
-            [
-                [100.0, 0.0],
-                [101.0, 0.0],
-                [101.0, 1.0],
-                [100.0, 1.0],
-                [100.0, 0.0]
-            ]
-        ]
-    }
-}];
+import {Manifest} from "./iiif/Manifest";
+import {Collection} from "./iiif/Collection";
 
 function App() {
-  return (
-    <div className='App'>
-        <h1>IIIF Story Map</h1>
-        <LeafletMapContainer geoJson={ geoJsonData } />
-        <p>&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors</p>
-    </div>
-  );
+    const [geoJson, setGeoJson] = useState<any>(null);
+    const [manifestLabels, setManifestLabels] = useState<string[]>([]);
+    const [label, setLabel] = useState<any | null>("loading");
+    const [manifests, setManifests] = useState<Array<Manifest>>([]);
+    const execute = async (options = {}) => {
+        try {
+            const c = new Collection('https://localhost:3000/collection/test.json');
+            await c.fetch();
+            const l = c.iiif?.getDefaultLabel();
+            let m = c.manifests();
+            setLabel(l);
+            setManifests(m)
+            setGeoJson(c.features());
+            setManifestLabels(m.map(manifest => manifest.label()));
+        } catch (e) {
+            console.log(e);
+            throw(e);
+        }
+    }
+    useEffect(() => {
+        execute();
+    }, []);
+
+    return (
+        <div className='App'>
+            <h1>{label}</h1>
+            <LeafletMapContainer geoJson={geoJson} labels={manifestLabels}/>
+            {manifests.map( (manifest, idx)  => (
+                <div>
+                    <img src={manifest?.thumb(200)} alt={manifest.label()} key={idx} className="thumb"/>
+                    <p>{manifest.label()}</p>
+                </div>
+            ))}
+            <p className="copyright">&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors</p>
+        </div>
+
+    );
 }
 
 export default App;

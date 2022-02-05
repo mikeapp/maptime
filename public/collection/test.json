@@ -1,0 +1,27 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "id": "https://localhost:3000/collection/test.json",
+  "type": "Collection",
+  "label": { "en": [ "Collection for Example Organization" ] },
+  "summary": { "en": [ "Short summary of the Collection" ] },
+  "requiredStatement": {
+    "label": { "en": [ "Attribution" ] },
+    "value": { "en": [ "Provided by Example Organization" ] }
+  },
+
+  "items": [
+    {
+      "id": "https://localhost:3000/collection/1012.json",
+      "type": "Manifest"
+    },
+    {
+      "id": "https://collections.library.yale.edu/manifests/17154400",
+      "type": "Manifest"
+    },
+    {
+      "id": "https://figgy.princeton.edu/manifests/32146ff6-c93d-4b14-b198-6fb518b44042/v3",
+      "type": "Manifest"
+    }
+
+  ]
+}

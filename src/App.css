@@ -4,7 +4,17 @@
 
 .LeafletContainer {
   width: 90%;
-  height: 80vh;
+  height: 50vh;
   margin: auto;
   clear: both;
+}
+
+.thumb {
+  max-height: 100px;
+  margin: 10px;
+}
+
+.copyright {
+  margin-top: 20px;
+  font-size: x-small;
 }

@@ -1,11 +1,12 @@
 import {GeoJSON,  TileLayer, Tooltip, useMap} from 'react-leaflet';
 import L, {IconOptions, LatLng} from 'leaflet';
-import {ReactElement, useEffect, useState} from "react";
+import React, {ReactElement, useEffect, useState} from "react";
 import {bbox, featureCollection} from "@turf/turf";
 
 
 interface MapProps {
-    geoJson:any
+    geoJson:any;
+    labels: string[];
 }
 
 const iconProps:IconOptions = {
@@ -38,9 +39,9 @@ export default function Map(props:MapProps) {
                 data={data}
                 pointToLayer={blueMarker}
                 style={{color: 'blue'}}
-            ><Tooltip>Hello</Tooltip></GeoJSON>)));
+            ><Tooltip>{props.labels[index]}</Tooltip></GeoJSON>)));
         }
-    }, [props.geoJson, map]);
+    }, [props.geoJson, props.labels, map]);
 
     return (
         <>
