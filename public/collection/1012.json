@@ -2,6 +2,7 @@
   "@context": "http://iiif.io/api/presentation/3/context.json",
   "id": "https://127.0.0.1:3000/1012.json",
   "type": "Manifest",
+  "navDate": "1776-01-01T00:00:00Z",
   "navPlace": {
     "id":"https://127.0.0.1:3000/1012/feature",
     "type": "FeatureCollection",

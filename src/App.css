@@ -1,17 +1,22 @@
-.App {
-  text-align: center;
-}
-
 .LeafletContainer {
-  width: 90%;
-  height: 50vh;
+  width: 100%;
+  height: 40vh;
   margin: auto;
   clear: both;
+  margin-bottom: 10px;
 }
 
 .thumb {
-  max-height: 100px;
-  margin: 10px;
+  aspect-ratio: auto;
+  max-width: 200px;
+}
+
+.card {
+  border: none;
+}
+
+.card p {
+  max-width: 200px;
 }
 
 .copyright {

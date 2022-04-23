@@ -22,6 +22,15 @@ export class Manifest {
         return this.json['navPlace'];
     }
 
+    navDate() {
+        let dateString = this.json['navDate'];
+        let date: Date | null = null;
+        if (dateString) {
+            date = new Date(dateString);
+        }
+        return date;
+    }
+
     label() {
         let label = this.iiif?.getDefaultLabel();
         if (typeof(label) === 'string') {
