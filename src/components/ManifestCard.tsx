@@ -15,7 +15,7 @@ const ManifestCard = ({manifest}: ManifestCardProps) => <Card variant="outlined"
         />
         <CardContent>
             <Typography variant="body1" component="h2" display="block" gutterBottom>{manifest.label()}</Typography>
-            <Typography variant="caption" display="block" gutterBottom>{manifest.navDate()?.getUTCFullYear() || "no date"}</Typography>
+            <Typography variant="caption" display="block" gutterBottom>{manifest.navDateYear() || "no date"}</Typography>
         </CardContent>
     </Card>;
 

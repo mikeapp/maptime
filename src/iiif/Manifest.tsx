@@ -31,6 +31,12 @@ export class Manifest {
         return date;
     }
 
+    navDateYear(): number | null {
+        const year = this.navDate()?.getUTCFullYear();
+        if (year === undefined) return null;
+        return year;
+    }
+
     label() {
         let label = this.iiif?.getDefaultLabel();
         if (typeof(label) === 'string') {
