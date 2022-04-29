@@ -1,16 +1,16 @@
 import {MapContainer} from 'react-leaflet';
 import Map from "./Map";
 import React from "react";
+import {Manifest} from "../iiif/Manifest";
 
 interface MapContainerProps {
-    geoJson:any;
-    labels:string[];
+    manifests:Manifest[];
 }
 
 export default function LeafletMapContainer(props:MapContainerProps) {
     return (
         <MapContainer zoom={2}  className='LeafletContainer'>
-            <Map geoJson={props.geoJson} labels={props.labels} />
+            <Map manifests={props.manifests}  />
         </MapContainer>
     );
 }

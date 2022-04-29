@@ -2,11 +2,11 @@ import {GeoJSON,  TileLayer, Tooltip, useMap} from 'react-leaflet';
 import L, {IconOptions, LatLng} from 'leaflet';
 import React, {ReactElement, useEffect, useState} from "react";
 import {bbox, featureCollection} from "@turf/turf";
+import {Manifest} from "../iiif/Manifest";
 
 
 interface MapProps {
-    geoJson:any;
-    labels: string[];
+    manifests: Manifest[];
 }
 
 const iconProps:IconOptions = {
@@ -27,21 +27,26 @@ export default function Map(props:MapProps) {
     const map = useMap();
 
     useEffect(() => {
-        if (props.geoJson === null) {
+        console.log(props.manifests);
+        const geoJson = props.manifests.map( manifest => manifest.navPlace()?.['features']?.[0] ).filter( v => v !== undefined);
+        const labels = props.manifests.map(manifest => manifest.label());
+        console.log(geoJson);
+        console.log(labels);
+        if (geoJson === null || geoJson.length == 0) {
             setGeoJsonComponent([]);
             map.fitWorld();
         } else {
-            const allBounds = bbox(featureCollection(props.geoJson));
-            map.fitBounds([[allBounds[1], allBounds[0]], [allBounds[3], allBounds[2]]]);
-
-            setGeoJsonComponent(props.geoJson.map((data: any, index: number) => (<GeoJSON
-                key={"Map:" + index}
+            setGeoJsonComponent(geoJson.map((data: any, index: number) => (<GeoJSON
+                key={"Map:" + props.manifests[index].uri}
                 data={data}
                 pointToLayer={blueMarker}
                 style={{color: 'blue'}}
-            ><Tooltip>{props.labels[index]}</Tooltip></GeoJSON>)));
+            ><Tooltip>{labels[index]}</Tooltip></GeoJSON>)));
+
+            const allBounds = bbox(featureCollection(geoJson));
+            map.fitBounds([[allBounds[1], allBounds[0]], [allBounds[3], allBounds[2]]]);
         }
-    }, [props.geoJson, props.labels, map]);
+    }, [props.manifests, map]);
 
     return (
         <>

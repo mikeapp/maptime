@@ -12,6 +12,7 @@ const ManifestCard = ({manifest}: ManifestCardProps) => <Card variant="outlined"
             image={manifest?.thumb(800)}
             alt={manifest.label()}
             height={200}
+            key={manifest.uri}
         />
         <CardContent>
             <Typography variant="body1" component="h2" display="block" gutterBottom>{manifest.label()}</Typography>

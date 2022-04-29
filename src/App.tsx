@@ -9,10 +9,10 @@ import ManifestCard from "./components/ManifestCard";
 function App() {
     const [filterByDate, setFilterByDate] = useState(false);
     const [collection, setCollection] = useState<Collection | null>(null);
-    const [geoJSON, setGeoJSON] = useState<any[] | null>(null);
+    const [geoManifests, setGeoManifests] = useState<Manifest[]>([]);
     const [collectionLabel, setCollectionLabel] = useState<any | null>("loading");
     const [manifests, setManifests] = useState<Array<Manifest>>([]);
-    const [filteredManifests, setFileteredManifests] = useState<Array<Manifest>>([]);
+    const [filteredManifests, setFilteredManifests] = useState<Array<Manifest>>([]);
     const [dateRange, setDateRange] = useState([0,2022]);
     const execute = async (options = {}) => {
         try {
@@ -45,17 +45,17 @@ function App() {
             _filteredManifests.sort( (a,b) => (a.navDateYear() || 0) - (b.navDateYear() || 0) );
         }
 
-        let geoJsonFromCollection: any = _filteredManifests?.map( manifest => manifest.navPlace()?.['features']?.[0] ).filter( v => v !== undefined);
-        if (geoJsonFromCollection.length == 0) {
-            geoJsonFromCollection = null;
-        }
-        setGeoJSON(geoJsonFromCollection);
-        setFileteredManifests(_filteredManifests);
+        const _manifestsWithGeoJson = _filteredManifests.filter(manifest => {
+            const feature = manifest.navPlace()?.['features']?.[0];
+            return feature !== null && feature !== undefined;
+        });
+        setGeoManifests(_manifestsWithGeoJson);
+        setFilteredManifests(_filteredManifests);
     }, [manifests, filterByDate, dateRange]);
 
     // Slider
     const manifestYears: number[] = manifests.flatMap(manifest => manifest.navDateYear()).filter((v): v is number => v !== null);
-    const marks = manifestYears.map((v) => ({ value: v, label: `${v}`}) );
+    const marks = Array.from(new Set(manifestYears)).map((v) => ({ value: v, label: null}) );
 
     const handleDateChange = (event: any, newValue: number | number[], activeThumb: number) => {
         if (!Array.isArray(newValue)) newValue = [newValue, newValue];
@@ -67,7 +67,7 @@ function App() {
             <Grid item xs={12}>
                 <Typography variant="h3" component="h1">{collectionLabel}</Typography>
                 <div className="row">
-                    <LeafletMapContainer geoJson={geoJSON} labels={filteredManifests?.map(manifest => manifest.label())}/>
+                    <LeafletMapContainer manifests={geoManifests}/>
                 </div>
             </Grid>
             <Grid item xs={3}>
@@ -77,7 +77,7 @@ function App() {
                 <Slider
                     getAriaLabel={() => 'Years'}
                     value={dateRange}
-                    min={-1000}
+                    min={1000}
                     max={2022}
                     step={1}
                     marks={marks}
