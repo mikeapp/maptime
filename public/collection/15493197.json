@@ -1,0 +1,229 @@
+{
+  "@context": "http://iiif.io/api/presentation/2/context.json",
+  "@id": "https://127.0.0.1:3000/collection/15493197.json",
+  "@type": "sc:Manifest",
+  "navDate": "1834-01-01T00:00:00Z",
+  "label": "Rome and its environs : from a trigonometrical survey / by Sir William Gell, M.A., F.R.S., &c. ; engraved by J. Gardner.",
+  "related": [
+    {
+      "@id": "https://collections.library.yale.edu/catalog/15493197",
+      "format": "text/html",
+      "label": "Yale Digital Collections page"
+    }
+  ],
+  "rendering": [
+    {
+      "@id": "https://collections.library.yale.edu/pdfs/15493197.pdf",
+      "format": "application/pdf",
+      "label": "Download as PDF"
+    }
+  ],
+  "seeAlso": [
+    {
+      "@id": "https://collections.library.yale.edu/catalog/oai?verb=GetRecord&metadataPrefix=oai_mods&identifier=oai:collections.library.yale.edu:15493197",
+      "format": "application/mods+xml",
+      "profile": "http://www.loc.gov/mods/v3"
+    }
+  ],
+  "metadata": [
+    {
+      "label": "Alternative Title",
+      "value": [
+        "Rome & its environs"
+      ]
+    },
+    {
+      "label": "Creator",
+      "value": [
+        "Gell, William, Sir, 1777-1836"
+      ]
+    },
+    {
+      "label": "Published/Created Date",
+      "value": [
+        "Septr. 1834."
+      ]
+    },
+    {
+      "label": "Publication Place",
+      "value": [
+        "London :"
+      ]
+    },
+    {
+      "label": "Publisher",
+      "value": [
+        "Published by Saunders & Otley, Conduit Street,"
+      ]
+    },
+    {
+      "label": "Extent",
+      "value": [
+        "1 map : dissected and mounted on linen ; 71 x 97 cm."
+      ]
+    },
+    {
+      "label": "Extent of Digitization",
+      "value": [
+        "Complete work digitized."
+      ]
+    },
+    {
+      "label": "Scale",
+      "value": [
+        "Scale [ca. 1:100 000]."
+      ]
+    },
+    {
+      "label": "Coordinates",
+      "value": [
+        "100000",
+        "a"
+      ]
+    },
+    {
+      "label": "Language",
+      "value": [
+        "English"
+      ]
+    },
+    {
+      "label": "Call Number",
+      "value": [
+        "40 R66 1834"
+      ]
+    },
+    {
+      "label": "Container / Volume Information",
+      "value": [
+        "BRBL_00216"
+      ]
+    },
+    {
+      "label": "Format",
+      "value": [
+        "cartographic"
+      ]
+    },
+    {
+      "label": "Genre",
+      "value": [
+        "Maps"
+      ]
+    },
+    {
+      "label": "Resource Type",
+      "value": [
+        "Maps, Atlases & Globes"
+      ]
+    },
+    {
+      "label": "Subject (Geographic)",
+      "value": [
+        "Rome (Italy : Province)--Maps"
+      ]
+    },
+    {
+      "label": "Subject (Name)",
+      "value": [
+        "Saunders and Otley"
+      ]
+    },
+    {
+      "label": "Access",
+      "value": [
+        "Public"
+      ]
+    },
+    {
+      "label": "Rights",
+      "value": [
+        "The use of this image may be subject to the copyright law of the United States (Title 17, United States Code) or to site license or other rights management terms and conditions. The person using the image is liable for any infringement"
+      ]
+    },
+    {
+      "label": "Orbis ID",
+      "value": [
+        "8543535"
+      ]
+    },
+    {
+      "label": "OID",
+      "value": [
+        "15493197"
+      ]
+    }
+  ],
+  "attribution": "Yale University Library",
+  "sequences": [
+    {
+      "@id": "https://collections.library.yale.edu/manifests/sequence/15493197",
+      "@type": "sc:Sequence",
+      "rendering": [
+        {
+          "@id": "https://collections.library.yale.edu/pdfs/15493197.pdf",
+          "format": "application/pdf",
+          "label": "Download as PDF"
+        }
+      ],
+      "canvases": [
+        {
+          "@id": "https://collections.library.yale.edu/manifests/oid/15493197/canvas/15493313",
+          "@type": "sc:Canvas",
+          "label": "recto",
+          "images": [
+            {
+              "@id": "https://collections.library.yale.edu/manifests/oid/15493197/canvas/15493313/image/1",
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "on": "https://collections.library.yale.edu/manifests/oid/15493197/canvas/15493313",
+              "resource": {
+                "@id": "https://collections.library.yale.edu/iiif/2/15493313/full/!200,200/0/default.jpg",
+                "@type": "dctypes:Image",
+                "format": "image/jpeg",
+                "width": 12258,
+                "height": 8727,
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://collections.library.yale.edu/iiif/2/15493313",
+                  "profile": "http://iiif.io/api/image/2/level2.json"
+                }
+              }
+            }
+          ],
+          "height": 8727,
+          "width": 12258,
+          "metadata": [
+            {
+              "label": "Image OID",
+              "value": [
+                "15493313"
+              ]
+            },
+            {
+              "label": "Image Label",
+              "value": [
+                "recto"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "thumbnail": [
+    {
+      "@id": "https://collections.library.yale.edu/iiif/2/15493313/full/!200,200/0/default.jpg",
+      "@type": "dctypes:Image",
+      "format": "image/jpeg",
+      "width": 12258,
+      "height": 8727,
+      "service": {
+        "@context": "http://iiif.io/api/image/2/context.json",
+        "@id": "https://collections.library.yale.edu/iiif/2/15493313",
+        "profile": "http://iiif.io/api/image/2/level2.json"
+      }
+    }
+  ],
+  "startCanvas": "https://collections.library.yale.edu/manifests/oid/15493197/canvas/15493313"
+}

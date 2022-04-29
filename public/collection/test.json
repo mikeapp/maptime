@@ -15,6 +15,30 @@
       "type": "Manifest"
     },
     {
+      "id":"https://localhost:3000/collection/10538410.json",
+      "type": "Manifest"
+    },
+    {
+      "id": "https://localhost:3000/collection/15493197.json",
+      "type": "Manifest"
+    },
+    {
+      "id": "https://localhost:3000/collection/2056645.json",
+      "type": "Manifest"
+    },
+    {
+      "id": "https://localhost:3000/collection/2006140.json",
+      "type": "Manifest"
+    },
+    {
+      "id": "https://localhost:3000/collection/2056646.json",
+      "type": "Manifest"
+    },
+    {
+      "id": "https://localhost:3000/collection/15824447.json",
+      "type": "Manifest"
+    },
+    {
       "id": "https://collections.library.yale.edu/manifests/17154400",
       "type": "Manifest"
     },

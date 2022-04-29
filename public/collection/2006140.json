@@ -1,0 +1,181 @@
+{
+  "@context": "http://iiif.io/api/presentation/2/context.json",
+  "@id": "https://localhost:3000/collection/2006140.json",
+  "@type": "sc:Manifest",
+  "label": "Arcus Marmoreus, omnium qui extant, antiquissimus, a Tito Vespasiano... plate no. 27.",
+  "navDate": "1569-01-01T00:00:00Z",
+  "related": [
+    {
+      "@id": "https://collections.library.yale.edu/catalog/2006140",
+      "format": "text/html",
+      "label": "Yale Digital Collections page"
+    }
+  ],
+  "rendering": [
+    {
+      "@id": "https://collections.library.yale.edu/pdfs/2006140.pdf",
+      "format": "application/pdf",
+      "label": "Download as PDF"
+    }
+  ],
+  "seeAlso": [
+    {
+      "@id": "https://collections.library.yale.edu/catalog/oai?verb=GetRecord&metadataPrefix=oai_mods&identifier=oai:collections.library.yale.edu:2006140",
+      "format": "application/mods+xml",
+      "profile": "http://www.loc.gov/mods/v3"
+    }
+  ],
+  "metadata": [
+    {
+      "label": "Alternative Title",
+      "value": [
+        "[Urbis Romae aedificiorum illustrium quae supersunt reliquiae]"
+      ]
+    },
+    {
+      "label": "Published/Created Date",
+      "value": [
+        "1569"
+      ]
+    },
+    {
+      "label": "Publication Place",
+      "value": [
+        "[Rome?"
+      ]
+    },
+    {
+      "label": "Publisher",
+      "value": [
+        "n.p"
+      ]
+    },
+    {
+      "label": "Extent",
+      "value": [
+        "1 plate.",
+        "28 cm."
+      ]
+    },
+    {
+      "label": "Call Number",
+      "value": [
+        "2001 825"
+      ]
+    },
+    {
+      "label": "Collection Title",
+      "value": [
+        "Cosmo Medici Duci Florentinor. et Senens. Vrbis Romae aedificiorum illustrium quae supersunt reliquiae / summa cum diligentia a Ioanne Antonio Dosio stilo ferreo ut hodie cernuntur descriptae et a Io. Baptista de Caualeriis aeneis tabulis incisis repraese"
+      ]
+    },
+    {
+      "label": "Collection Created",
+      "value": [
+        "[Rome? : s.n.], 1569, Kal. Mai"
+      ]
+    },
+    {
+      "label": "Format",
+      "value": [
+        "still image"
+      ]
+    },
+    {
+      "label": "Genre",
+      "value": [
+        "Illustrations"
+      ]
+    },
+    {
+      "label": "Access",
+      "value": [
+        "Public"
+      ]
+    },
+    {
+      "label": "Rights",
+      "value": [
+        "The use of this image may be subject to the copyright law of the United States (Title 17, United States Code) or to site license or other rights management terms and conditions. The person using the image is liable for any infringement."
+      ]
+    },
+    {
+      "label": "Orbis ID",
+      "value": [
+        "4724925"
+      ]
+    },
+    {
+      "label": "OID",
+      "value": [
+        "2006140"
+      ]
+    }
+  ],
+  "attribution": "Yale University Library",
+  "sequences": [
+    {
+      "@id": "https://collections.library.yale.edu/manifests/sequence/2006140",
+      "@type": "sc:Sequence",
+      "rendering": [
+        {
+          "@id": "https://collections.library.yale.edu/pdfs/2006140.pdf",
+          "format": "application/pdf",
+          "label": "Download as PDF"
+        }
+      ],
+      "canvases": [
+        {
+          "@id": "https://collections.library.yale.edu/manifests/oid/2006140/canvas/1034036",
+          "@type": "sc:Canvas",
+          "label": "",
+          "images": [
+            {
+              "@id": "https://collections.library.yale.edu/manifests/oid/2006140/canvas/1034036/image/1",
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "on": "https://collections.library.yale.edu/manifests/oid/2006140/canvas/1034036",
+              "resource": {
+                "@id": "https://collections.library.yale.edu/iiif/2/1034036/full/!200,200/0/default.jpg",
+                "@type": "dctypes:Image",
+                "format": "image/jpeg",
+                "width": 4123,
+                "height": 5396,
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://collections.library.yale.edu/iiif/2/1034036",
+                  "profile": "http://iiif.io/api/image/2/level2.json"
+                }
+              }
+            }
+          ],
+          "height": 5396,
+          "width": 4123,
+          "metadata": [
+            {
+              "label": "Image OID",
+              "value": [
+                "1034036"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "thumbnail": [
+    {
+      "@id": "https://collections.library.yale.edu/iiif/2/1034036/full/!200,200/0/default.jpg",
+      "@type": "dctypes:Image",
+      "format": "image/jpeg",
+      "width": 4123,
+      "height": 5396,
+      "service": {
+        "@context": "http://iiif.io/api/image/2/context.json",
+        "@id": "https://collections.library.yale.edu/iiif/2/1034036",
+        "profile": "http://iiif.io/api/image/2/level2.json"
+      }
+    }
+  ],
+  "startCanvas": "https://collections.library.yale.edu/manifests/oid/2006140/canvas/1034036"
+}
