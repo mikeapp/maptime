@@ -8,9 +8,10 @@ interface MapContainerProps {
 }
 
 export default function LeafletMapContainer(props:MapContainerProps) {
+    const manifestsWithGeoJson = props.manifests.filter(manifest => manifest.navPlace());
     return (
         <MapContainer zoom={2}  className='LeafletContainer'>
-            <Map manifests={props.manifests}  />
+            <Map manifests={manifestsWithGeoJson}  />
         </MapContainer>
     );
 }
