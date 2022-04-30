@@ -2,7 +2,7 @@
   "@context": "http://iiif.io/api/presentation/3/context.json",
   "id": "https://localhost:3000/collection/test.json",
   "type": "Collection",
-  "label": { "en": [ "Mike's test collection" ] },
+  "label": { "en": [ "Map and Timeline Collection" ] },
   "summary": { "en": [ "Short summary of the Collection" ] },
   "requiredStatement": {
     "label": { "en": [ "Attribution" ] },
