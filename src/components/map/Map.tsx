@@ -29,8 +29,6 @@ export default function Map(props:MapProps) {
     useEffect(() => {
         const geoJson = props.manifests.map( manifest => manifest.navPlace()?.['features']?.[0] );
         const labels = props.manifests.map(manifest => manifest.label());
-        console.log(geoJson);
-        console.log(labels);
         if (geoJson === null || geoJson.length === 0) {
             setGeoJsonComponent([]);
             map.fitWorld();
