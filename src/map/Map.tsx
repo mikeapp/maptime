@@ -27,8 +27,7 @@ export default function Map(props:MapProps) {
     const map = useMap();
 
     useEffect(() => {
-        console.log(props.manifests);
-        const geoJson = props.manifests.map( manifest => manifest.navPlace()?.['features']?.[0] ).filter( v => v !== undefined);
+        const geoJson = props.manifests.map( manifest => manifest.navPlace()?.['features']?.[0] );
         const labels = props.manifests.map(manifest => manifest.label());
         console.log(geoJson);
         console.log(labels);
