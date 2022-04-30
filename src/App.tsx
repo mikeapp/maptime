@@ -3,7 +3,7 @@ import './App.css';
 import LeafletMapContainer from "./components/map/LeafletMapContainer";
 import {Manifest} from "./iiif/Manifest";
 import {Collection} from "./iiif/Collection";
-import {AppBar, Box, Checkbox, Grid, Slider, Typography} from "@mui/material";
+import {AppBar, Box, Checkbox, Grid, Typography} from "@mui/material";
 import ManifestCard from "./components/ManifestCard";
 import MapCopyright from "./components/map/MapCopyright";
 import DateRangeSlider from "./components/dateRange/DateRangeSlider";
@@ -11,7 +11,6 @@ import DateRangeSlider from "./components/dateRange/DateRangeSlider";
 function App() {
     const [filterByDate, setFilterByDate] = useState(false);
     const [collection, setCollection] = useState<Collection | null>(null);
-    const [geoManifests, setGeoManifests] = useState<Manifest[]>([]);
     const [collectionLabel, setCollectionLabel] = useState<any | null>("loading");
     const [manifests, setManifests] = useState<Array<Manifest>>([]);
     const [filteredManifests, setFilteredManifests] = useState<Array<Manifest>>([]);
@@ -45,8 +44,6 @@ function App() {
             });
             _filteredManifests.sort( (a,b) => (a.navDateYear() || 0) - (b.navDateYear() || 0) );
         }
-        const _manifestsWithGeoJson = _filteredManifests.filter(manifest => manifest.navPlace());
-        setGeoManifests(_manifestsWithGeoJson);
         setFilteredManifests(_filteredManifests);
     }, [manifests, filterByDate, dateRange]);
 
@@ -58,7 +55,7 @@ function App() {
             <Grid container spacing={2} pl={2} pr={2} pt={2}>
                 <Grid item xs={12}>
                     <div className="row">
-                        <LeafletMapContainer manifests={geoManifests}/>
+                        <LeafletMapContainer manifests={filteredManifests}/>
                     </div>
                 </Grid>
                 <Grid item xs={12}>
