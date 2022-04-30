@@ -68,7 +68,7 @@ function App() {
                 </Grid>
             </Grid>
             {filteredManifests.map( (manifest, idx)  => (
-                <Box maxWidth={200} sx={{float:"left"}} p={1} display="block">
+                <Box maxWidth={200} sx={{float:"left"}} p={1} display="block" key={manifest.uri}>
                     <ManifestCard manifest={manifest} />
                 </Box>
             ))}
