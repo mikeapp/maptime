@@ -3,7 +3,7 @@ import './App.css';
 import LeafletMapContainer from "./map/LeafletMapContainer";
 import {Manifest} from "./iiif/Manifest";
 import {Collection} from "./iiif/Collection";
-import {Checkbox, Grid, Slider, Typography} from "@mui/material";
+import {Box, Checkbox, Grid, Slider, Typography} from "@mui/material";
 import ManifestCard from "./components/ManifestCard";
 
 function App() {
@@ -33,7 +33,6 @@ function App() {
     }, []);
 
     useEffect( () => {
-        // Filtered data
         let _filteredManifests = manifests;
         if (filterByDate) {
             let earliestYear = dateRange[0];
@@ -44,11 +43,7 @@ function App() {
             });
             _filteredManifests.sort( (a,b) => (a.navDateYear() || 0) - (b.navDateYear() || 0) );
         }
-
-        const _manifestsWithGeoJson = _filteredManifests.filter(manifest => {
-            const feature = manifest.navPlace()?.['features']?.[0];
-            return feature !== null && feature !== undefined;
-        });
+        const _manifestsWithGeoJson = _filteredManifests.filter(manifest => manifest.navPlace());
         setGeoManifests(_manifestsWithGeoJson);
         setFilteredManifests(_filteredManifests);
     }, [manifests, filterByDate, dateRange]);
@@ -63,40 +58,42 @@ function App() {
     };
 
     return (
-        <Grid container spacing={2} pl={2} pr={2}>
-            <Grid item xs={12}>
-                <Typography variant="h3" component="h1">{collectionLabel}</Typography>
-                <div className="row">
-                    <LeafletMapContainer manifests={geoManifests}/>
-                </div>
-            </Grid>
-            <Grid item xs={3}>
-                <Checkbox checked={filterByDate} onChange={(e) => {setFilterByDate( e.target.checked)}} /> Restrict to date range
-            </Grid>
-            <Grid item xs={9} pr={2} mt={2}>
-                <Slider
-                    getAriaLabel={() => 'Years'}
-                    value={dateRange}
-                    min={1000}
-                    max={2022}
-                    step={1}
-                    marks={marks}
-                    onChange={handleDateChange}
-                    valueLabelDisplay="auto"
-                    getAriaValueText={(value) => ""+value}
-                    disableSwap
-                    disabled={!filterByDate}
-                />
+        <>
+            <Grid container spacing={2} pl={2} pr={2}>
+                <Grid item xs={12}>
+                    <Typography variant="h4" component="h1">{collectionLabel}</Typography>
+                    <div className="row">
+                        <LeafletMapContainer manifests={geoManifests}/>
+                    </div>
+                </Grid>
+                <Grid item xs={12}>
+                    <Checkbox checked={filterByDate} onChange={(e) => {setFilterByDate( e.target.checked)}} />
+                    <Typography variant="body1" display="inline" mr={4} sx={{clear:"none"}}>Limit by date range:</Typography>
+                    <Slider
+                        getAriaLabel={() => 'Years'}
+                        value={dateRange}
+                        min={1000}
+                        max={2022}
+                        step={1}
+                        sx={{width:"60%", verticalAlign:"middle"}}
+                        marks={marks}
+                        onChange={handleDateChange}
+                        valueLabelDisplay="auto"
+                        getAriaValueText={(value) => ""+value}
+                        disableSwap
+                        disabled={!filterByDate}
+                    />
+                </Grid>
             </Grid>
             {filteredManifests.map( (manifest, idx)  => (
-                <Grid item xs={2} sx={{ maxWidth: 150 }} >
-                    <ManifestCard manifest={manifest}  />
-                </Grid>
+                <Box maxWidth={200} sx={{float:"left"}} p={1} display="block">
+                    <ManifestCard manifest={manifest} />
+                </Box>
             ))}
-            <Grid item xs={12}>
+            <Box display="block" p={2} sx={{clear:"left"}}>
                 <p className="copyright">Map data &copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors</p>
-            </Grid>
-        </Grid>
+            </Box>
+        </>
     );
 }
 

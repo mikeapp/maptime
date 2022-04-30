@@ -16,7 +16,7 @@ const ManifestCard = ({manifest}: ManifestCardProps) =>
             component="img"
             image={manifest?.thumb(200)}
             alt={manifest.label()}
-            height={200}
+            height={150}
             key={manifest.uri}
         />
         <CardContent>

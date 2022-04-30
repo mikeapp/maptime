@@ -19,6 +19,8 @@ export class Manifest {
     }
 
     navPlace() {
+        const feature = this.json['navPlace']?.['features']?.[0];
+        if (feature === null || feature === undefined) return null;
         return this.json['navPlace'];
     }
 
