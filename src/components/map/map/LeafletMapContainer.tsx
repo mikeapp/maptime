@@ -1,7 +1,7 @@
 import {MapContainer} from 'react-leaflet';
 import Map from "./Map";
 import React from "react";
-import {Manifest} from "../iiif/Manifest";
+import {Manifest} from "../../../iiif/Manifest";
 
 interface MapContainerProps {
     manifests:Manifest[];

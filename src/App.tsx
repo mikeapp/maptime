@@ -1,10 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import './App.css';
-import LeafletMapContainer from "./map/LeafletMapContainer";
+import LeafletMapContainer from "./components/map/map/LeafletMapContainer";
 import {Manifest} from "./iiif/Manifest";
 import {Collection} from "./iiif/Collection";
 import {AppBar, Box, Checkbox, Grid, Slider, Typography} from "@mui/material";
 import ManifestCard from "./components/ManifestCard";
+import MapCopyright from "./components/map/map/MapCopyright";
 
 function App() {
     const [filterByDate, setFilterByDate] = useState(false);
@@ -92,9 +93,7 @@ function App() {
                     <ManifestCard manifest={manifest} />
                 </Box>
             ))}
-            <Box display="block" p={2} sx={{clear:"left"}}>
-                <p className="copyright">Map data &copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors</p>
-            </Box>
+            <MapCopyright />
         </>
     );
 }
