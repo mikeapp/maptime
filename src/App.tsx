@@ -3,7 +3,7 @@ import './App.css';
 import LeafletMapContainer from "./map/LeafletMapContainer";
 import {Manifest} from "./iiif/Manifest";
 import {Collection} from "./iiif/Collection";
-import {Box, Checkbox, Grid, Slider, Typography} from "@mui/material";
+import {AppBar, Box, Checkbox, Grid, Slider, Typography} from "@mui/material";
 import ManifestCard from "./components/ManifestCard";
 
 function App() {
@@ -59,9 +59,11 @@ function App() {
 
     return (
         <>
-            <Grid container spacing={2} pl={2} pr={2}>
+            <AppBar position="sticky">
+                <Typography variant="h4" component="h1" p={2} bgcolor={"dimgray"}>{collectionLabel}</Typography>
+            </AppBar>
+            <Grid container spacing={2} pl={2} pr={2} pt={2}>
                 <Grid item xs={12}>
-                    <Typography variant="h4" component="h1">{collectionLabel}</Typography>
                     <div className="row">
                         <LeafletMapContainer manifests={geoManifests}/>
                     </div>
