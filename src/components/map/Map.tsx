@@ -31,7 +31,7 @@ export default function Map(props:MapProps) {
         const labels = props.manifests.map(manifest => manifest.label());
         console.log(geoJson);
         console.log(labels);
-        if (geoJson === null || geoJson.length == 0) {
+        if (geoJson === null || geoJson.length === 0) {
             setGeoJsonComponent([]);
             map.fitWorld();
         } else {

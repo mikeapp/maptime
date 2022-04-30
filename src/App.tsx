@@ -6,6 +6,7 @@ import {Collection} from "./iiif/Collection";
 import {AppBar, Box, Checkbox, Grid, Slider, Typography} from "@mui/material";
 import ManifestCard from "./components/ManifestCard";
 import MapCopyright from "./components/map/MapCopyright";
+import DateRangeSlider from "./components/dateRange/DateRangeSlider";
 
 function App() {
     const [filterByDate, setFilterByDate] = useState(false);
@@ -49,15 +50,6 @@ function App() {
         setFilteredManifests(_filteredManifests);
     }, [manifests, filterByDate, dateRange]);
 
-    // Slider
-    const manifestYears: number[] = manifests.flatMap(manifest => manifest.navDateYear()).filter((v): v is number => v !== null);
-    const marks = Array.from(new Set(manifestYears)).map((v) => ({ value: v, label: null}) );
-
-    const handleDateChange = (event: any, newValue: number | number[], activeThumb: number) => {
-        if (!Array.isArray(newValue)) newValue = [newValue, newValue];
-        setDateRange(newValue);
-    };
-
     return (
         <>
             <AppBar position="sticky">
@@ -72,20 +64,7 @@ function App() {
                 <Grid item xs={12}>
                     <Checkbox checked={filterByDate} onChange={(e) => {setFilterByDate( e.target.checked)}} />
                     <Typography variant="body1" display="inline" mr={4} sx={{clear:"none"}}>Limit by date range:</Typography>
-                    <Slider
-                        getAriaLabel={() => 'Years'}
-                        value={dateRange}
-                        min={1000}
-                        max={2022}
-                        step={1}
-                        sx={{width:"60%", verticalAlign:"middle"}}
-                        marks={marks}
-                        onChange={handleDateChange}
-                        valueLabelDisplay="auto"
-                        getAriaValueText={(value) => ""+value}
-                        disableSwap
-                        disabled={!filterByDate}
-                    />
+                    <DateRangeSlider collection={collection} disabled={!filterByDate} dateRange={dateRange} setDateRange={setDateRange} />
                 </Grid>
             </Grid>
             {filteredManifests.map( (manifest, idx)  => (
