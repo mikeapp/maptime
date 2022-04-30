@@ -2,7 +2,7 @@ import {GeoJSON,  TileLayer, Tooltip, useMap} from 'react-leaflet';
 import L, {IconOptions, LatLng} from 'leaflet';
 import React, {ReactElement, useEffect, useState} from "react";
 import {bbox, featureCollection} from "@turf/turf";
-import {Manifest} from "../../../iiif/Manifest";
+import {Manifest} from "../../iiif/Manifest";
 
 
 interface MapProps {
