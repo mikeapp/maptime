@@ -4,6 +4,29 @@
   "@type": "sc:Manifest",
   "label": "La Chiesa de Santa Cecilia",
   "navDate": "1588-01-01T00:00:00Z",
+  "navPlace":  {
+    "id":"https://127.0.0.1:3000/10538410/feature",
+    "type": "FeatureCollection",
+    "features": [
+      {
+        "id": "feature4",
+        "type": "Feature",
+        "properties": {
+          "label": {
+            "en": [
+              "La Chiesa de Santa Cecilia"
+            ]
+          }
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            12.4743851,
+            41.8871899
+          ]
+        }
+      }]
+  },
   "related": [
     {
       "@id": "https://collections.library.yale.edu/catalog/2056646",

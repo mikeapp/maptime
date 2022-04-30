@@ -4,6 +4,29 @@
   "@type": "sc:Manifest",
   "label": "La Chiesa di San Bartolameo nell' Isola",
   "navDate": "1588-01-01T00:00:00Z",
+  "navPlace":  {
+    "id":"https://127.0.0.1:3000/10538410/feature",
+    "type": "FeatureCollection",
+    "features": [
+      {
+        "id": "feature3",
+        "type": "Feature",
+        "properties": {
+          "label": {
+            "en": [
+              "La Chiesa di San Bartolameo nell' Isola"
+            ]
+          }
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            12.4782114,
+            41.8903329
+          ]
+        }
+      }]
+  },
   "related": [
     {
       "@id": "https://collections.library.yale.edu/catalog/2056645",

@@ -4,6 +4,29 @@
   "@type": "sc:Manifest",
   "label": "Arcus Marmoreus, omnium qui extant, antiquissimus, a Tito Vespasiano... plate no. 27.",
   "navDate": "1569-01-01T00:00:00Z",
+  "navPlace":  {
+    "id":"https://127.0.0.1:3000/10538410/feature",
+    "type": "FeatureCollection",
+    "features": [
+      {
+        "id": "feature6",
+        "type": "Feature",
+        "properties": {
+          "label": {
+            "en": [
+              "Arcus Marmoreus, omnium qui extant, antiquissimus, a Tito Vespasiano... plate no. 27."
+            ]
+          }
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            12.4852686,
+            41.8917275
+          ]
+        }
+      }]
+  },
   "related": [
     {
       "@id": "https://collections.library.yale.edu/catalog/2006140",
