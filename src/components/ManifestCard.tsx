@@ -9,9 +9,7 @@ type ManifestCardProps = {
 }
 
 const ManifestCard = ({manifest}: ManifestCardProps) =>
-    <Card variant="outlined"
-          raised={true}
-    >
+    <Card raised={true}>
         <CardMedia
             component="img"
             image={manifest?.thumb(200)}
@@ -26,7 +24,7 @@ const ManifestCard = ({manifest}: ManifestCardProps) =>
                 display="-webkit-box"
                 overflow="hidden"
                 height={60}
-                sx={{"-webkit-line-clamp":3}}
+                sx={{"WebkitLineClamp":3}}
                 mb={2}
                 >{manifest.label()}</Typography>
             { (manifest.navDateYear()) ?
