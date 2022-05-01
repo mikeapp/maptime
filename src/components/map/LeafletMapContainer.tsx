@@ -5,13 +5,14 @@ import {Manifest} from "../../iiif/Manifest";
 
 interface MapContainerProps {
     manifests:Manifest[];
+    focus?: Manifest | null;
 }
 
-export default function LeafletMapContainer(props:MapContainerProps) {
-    const manifestsWithGeoJson = props.manifests.filter(manifest => manifest.navPlace());
+export default function LeafletMapContainer({manifests, focus}:MapContainerProps) {
+    const manifestsWithGeoJson = manifests.filter(manifest => manifest.navPlace());
     return (
         <MapContainer zoom={2}  className='LeafletContainer'>
-            <Map manifests={manifestsWithGeoJson}  />
+            <Map manifests={manifestsWithGeoJson} focus={focus}  />
         </MapContainer>
     );
 }

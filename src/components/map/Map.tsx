@@ -7,6 +7,7 @@ import {Manifest} from "../../iiif/Manifest";
 
 interface MapProps {
     manifests: Manifest[];
+    focus?: Manifest | null;
 }
 
 const iconProps:IconOptions = {
@@ -22,28 +23,30 @@ const blueMarker = (geoJsonPoint:any, latlng: LatLng) => {
     return new L.Marker(latlng, {icon: blueIcon});
 }
 
-export default function Map(props:MapProps) {
+export default function Map({manifests, focus}:MapProps) {
     const [geoJsonComponent, setGeoJsonComponent] = useState<null | Array<ReactElement>>(null);
     const map = useMap();
 
     useEffect(() => {
-        const geoJson = props.manifests.map( manifest => manifest.navPlace()?.['features']?.[0] );
-        const labels = props.manifests.map(manifest => manifest.label());
+        const geoJson = manifests.map( manifest => manifest.navPlace()?.['features']?.[0] );
+        const labels = manifests.map(manifest => manifest.label());
         if (geoJson === null || geoJson.length === 0) {
             setGeoJsonComponent([]);
             map.fitWorld();
         } else {
             setGeoJsonComponent(geoJson.map((data: any, index: number) => (<GeoJSON
-                key={"Map:" + props.manifests[index].uri}
+                key={"Map:" + manifests[index].uri}
                 data={data}
                 pointToLayer={blueMarker}
                 style={{color: 'blue'}}
             ><Tooltip>{labels[index]}</Tooltip></GeoJSON>)));
 
-            const allBounds = bbox(featureCollection(geoJson));
+            const focusBounds = focus?.navPlace()?.['features']?.[0];
+            console.log(focusBounds);
+            const allBounds = bbox(featureCollection((focusBounds !== undefined) ? [focusBounds] : geoJson));
             map.fitBounds([[allBounds[1], allBounds[0]], [allBounds[3], allBounds[2]]]);
         }
-    }, [props.manifests, map]);
+    }, [manifests, map]);
 
     return (
         <>

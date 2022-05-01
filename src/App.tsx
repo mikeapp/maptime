@@ -13,8 +13,17 @@ function App() {
     const [collection, setCollection] = useState<Collection | null>(null);
     const [collectionLabel, setCollectionLabel] = useState<any | null>("loading");
     const [manifests, setManifests] = useState<Array<Manifest>>([]);
+    const [focusManifest, setFocusManifest] = useState<Manifest | null>(null);
     const [filteredManifests, setFilteredManifests] = useState<Array<Manifest>>([]);
     const [dateRange, setDateRange] = useState([0,2022]);
+
+    const onSelectFocusManifest = (manifest: Manifest) => {
+        if (manifest === focusManifest) {
+            setFocusManifest(null);
+        } else {
+            setFocusManifest(manifest);
+        }
+    }
     const execute = async (options = {}) => {
         try {
             const c = new Collection('https://localhost:3000/collection/test.json');
@@ -55,7 +64,7 @@ function App() {
             <Grid container spacing={2} pl={2} pr={2} pt={2}>
                 <Grid item xs={12}>
                     <div className="row">
-                        <LeafletMapContainer manifests={filteredManifests}/>
+                        <LeafletMapContainer manifests={filteredManifests} focus={focusManifest}/>
                     </div>
                 </Grid>
                 <Grid item xs={12}>
@@ -66,7 +75,7 @@ function App() {
             </Grid>
             {filteredManifests.map( (manifest, idx)  => (
                 <Box maxWidth={200} sx={{float:"left"}} p={1} display="block" key={manifest.uri}>
-                    <ManifestCard manifest={manifest} />
+                    <ManifestCard manifest={manifest} onSelect={onSelectFocusManifest} isSelected={manifest === focusManifest} />
                 </Box>
             ))}
             <MapCopyright />
