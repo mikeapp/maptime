@@ -7,6 +7,7 @@ import {AppBar, Box, Checkbox, Grid, Typography} from "@mui/material";
 import ManifestCard from "./components/ManifestCard";
 import MapCopyright from "./components/map/MapCopyright";
 import DateRangeSlider from "./components/dateRange/DateRangeSlider";
+import MiradorDialog from "./components/mirador/MiradorDialog";
 
 function App() {
     const [filterByDate, setFilterByDate] = useState(false);
@@ -16,6 +17,7 @@ function App() {
     const [focusManifest, setFocusManifest] = useState<Manifest | null>(null);
     const [filteredManifests, setFilteredManifests] = useState<Array<Manifest>>([]);
     const [dateRange, setDateRange] = useState([0,2022]);
+    const [viewerManifest, setViewerManifest] = useState<Manifest | null>(null);
 
     const onSelectFocusManifest = (manifest: Manifest) => {
         if (manifest === focusManifest) {
@@ -24,6 +26,11 @@ function App() {
             setFocusManifest(manifest);
         }
     }
+
+    const onViewerClose = () => {
+        setViewerManifest(null);
+    }
+
     const execute = async (options = {}) => {
         try {
             const c = new Collection('https://localhost:3000/collection/test.json');
@@ -73,9 +80,10 @@ function App() {
                     <DateRangeSlider collection={collection} disabled={!filterByDate} dateRange={dateRange} setDateRange={setDateRange} />
                 </Grid>
             </Grid>
+            <MiradorDialog manifest={viewerManifest} handleClose={onViewerClose} />
             {filteredManifests.map( (manifest, idx)  => (
                 <Box maxWidth={200} sx={{float:"left"}} p={1} display="block" key={manifest.uri}>
-                    <ManifestCard manifest={manifest} onSelect={onSelectFocusManifest} isSelected={manifest === focusManifest} />
+                    <ManifestCard manifest={manifest} onSelect={onSelectFocusManifest} isSelected={manifest === focusManifest} onShowInViewer={setViewerManifest} />
                 </Box>
             ))}
             <MapCopyright />

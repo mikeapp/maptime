@@ -1,20 +1,21 @@
-import {Box, Card, CardActionArea, CardContent, CardMedia, Typography} from "@mui/material";
+import {Box, Button, Card, CardActionArea, CardContent, CardMedia, IconButton, Typography} from "@mui/material";
 import React from "react";
 import {Manifest} from "../iiif/Manifest";
 import MapIcon from '@mui/icons-material/Map';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
+import OpenInFullIcon from '@mui/icons-material/OpenInFull';
 
 type ManifestCardProps = {
     manifest: Manifest;
     isSelected?: boolean;
     onSelect?: (manifest: Manifest) => void;
+    onShowInViewer?: (manifest: Manifest) => void;
 }
 
-const ManifestCard = ({manifest, onSelect, isSelected}: ManifestCardProps) =>
+const ManifestCard = ({manifest, onSelect, isSelected, onShowInViewer}: ManifestCardProps) =>
     <Card raised={true}>
         <CardActionArea
-            onClick={() => onSelect? onSelect(manifest) : null}
-        >
+            onClick={() => onSelect? onSelect(manifest) : null}>
             <CardMedia
                 component="img"
                 image={manifest?.thumb(200)}
@@ -31,8 +32,11 @@ const ManifestCard = ({manifest, onSelect, isSelected}: ManifestCardProps) =>
                 overflow="hidden"
                 height={60}
                 sx={{"WebkitLineClamp":3}}
-                mb={2}
                 >{manifest.label()}</Typography>
+            <Box sx={{clear:"both"}}>
+                <IconButton sx={{float:"right"}} size="small" onClick={() => onShowInViewer? onShowInViewer(manifest) : null}><OpenInFullIcon /></IconButton>
+            </Box>
+            <Box sx={{clear:"both"}}>
             { (manifest.navDateYear()) ?
                 <div>
                  <CalendarMonthIcon sx={{float:"left"}} />
@@ -43,9 +47,11 @@ const ManifestCard = ({manifest, onSelect, isSelected}: ManifestCardProps) =>
                     <CalendarMonthIcon color="disabled" sx={{float:"left", opacity: '50%'}} />
                 </div>
             }
+            </Box>
             <Box sx={{clear:"left"}}>
                 { (manifest.navPlace()) ? <MapIcon color={isSelected? "primary" : "inherit"} /> : <MapIcon color="disabled" sx={{opacity: '50%'}} /> }
             </Box>
+
         </CardContent>
     </Card>;
 
