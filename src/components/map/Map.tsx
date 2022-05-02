@@ -42,7 +42,6 @@ export default function Map({manifests, focus}:MapProps) {
             ><Tooltip>{labels[index]}</Tooltip></GeoJSON>)));
 
             const focusBounds = focus?.navPlace()?.['features']?.[0];
-            console.log(focusBounds);
             const allBounds = bbox(featureCollection((focusBounds !== undefined) ? [focusBounds] : geoJson));
             map.fitBounds([[allBounds[1], allBounds[0]], [allBounds[3], allBounds[2]]]);
         }

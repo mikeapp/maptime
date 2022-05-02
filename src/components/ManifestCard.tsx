@@ -20,7 +20,7 @@ const ManifestCard = ({manifest, onSelect, isSelected, onShowInViewer}: Manifest
                 component="img"
                 image={manifest?.thumb(200)}
                 alt={manifest.label()}
-                height={150}
+                height={160}
                 key={manifest.uri}
             />
         </CardActionArea>

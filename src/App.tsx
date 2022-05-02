@@ -3,11 +3,12 @@ import './App.css';
 import LeafletMapContainer from "./components/map/LeafletMapContainer";
 import {Manifest} from "./iiif/Manifest";
 import {Collection} from "./iiif/Collection";
-import {AppBar, Box, Checkbox, Grid, Typography} from "@mui/material";
+import {AppBar, Box, Checkbox, Toolbar, Typography} from "@mui/material";
 import ManifestCard from "./components/ManifestCard";
 import MapCopyright from "./components/map/MapCopyright";
 import DateRangeSlider from "./components/dateRange/DateRangeSlider";
 import MiradorDialog from "./components/mirador/MiradorDialog";
+import CloseIcon from "@mui/icons-material/Close";
 
 function App() {
     const [filterByDate, setFilterByDate] = useState(false);
@@ -66,20 +67,20 @@ function App() {
     return (
         <>
             <AppBar position="sticky">
-                <Typography variant="h4" component="h1" p={2} bgcolor={"dimgray"}>{collectionLabel}</Typography>
+                <Toolbar sx={{backgroundColor:"dimgray"}}>
+                    <Typography variant="h5" component="h1" p={2}>{collectionLabel}</Typography>
+                </Toolbar>
             </AppBar>
-            <Grid container spacing={2} pl={2} pr={2} pt={2}>
-                <Grid item xs={12}>
-                    <div className="row">
-                        <LeafletMapContainer manifests={filteredManifests} focus={focusManifest}/>
-                    </div>
-                </Grid>
-                <Grid item xs={12}>
-                    <Checkbox checked={filterByDate} onChange={(e) => {setFilterByDate( e.target.checked)}} />
-                    <Typography variant="body1" display="inline" mr={4} sx={{clear:"none"}}>Limit by date range:</Typography>
-                    <DateRangeSlider collection={collection} disabled={!filterByDate} dateRange={dateRange} setDateRange={setDateRange} />
-                </Grid>
-            </Grid>
+            <Box>
+                <div className="row">
+                    <LeafletMapContainer manifests={filteredManifests} focus={focusManifest}/>
+                </div>
+            </Box>
+            <Box pt={2}>
+                <Checkbox checked={filterByDate} onChange={(e) => {setFilterByDate( e.target.checked)}} />
+                <Typography variant="body1" display="inline-block" pl={2} pr={4} sx={{clear:"none"}}>Limit by date range:</Typography>
+                <DateRangeSlider collection={collection} disabled={!filterByDate} dateRange={dateRange} setDateRange={setDateRange} />
+            </Box>
             <MiradorDialog manifest={viewerManifest} handleClose={onViewerClose} />
             {filteredManifests.map( (manifest, idx)  => (
                 <Box maxWidth={200} sx={{float:"left"}} p={1} display="block" key={manifest.uri}>
