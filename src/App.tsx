@@ -33,7 +33,7 @@ function App() {
 
     const execute = async (options = {}) => {
         try {
-            const c = new Collection('https://localhost:3000/collection/test.json');
+            const c = new Collection('https://mikeapp.github.io/manifest-fixtures/collection/test.json');
             await c.fetch();
             const l = c.iiif?.getDefaultLabel();
             let m = c.manifests();
