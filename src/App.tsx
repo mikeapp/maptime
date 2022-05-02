@@ -7,8 +7,7 @@ import {AppBar, Box, Checkbox, Toolbar, Typography} from "@mui/material";
 import ManifestCard from "./components/ManifestCard";
 import MapCopyright from "./components/map/MapCopyright";
 import DateRangeSlider from "./components/dateRange/DateRangeSlider";
-import MiradorDialog from "./components/mirador/MiradorDialog";
-import CloseIcon from "@mui/icons-material/Close";
+import UVDialog from "./components/mirador/UVDialog";
 
 function App() {
     const [filterByDate, setFilterByDate] = useState(false);
@@ -81,7 +80,7 @@ function App() {
                 <Typography variant="body1" display="inline-block" pl={2} pr={4} sx={{clear:"none"}}>Limit by date range:</Typography>
                 <DateRangeSlider collection={collection} disabled={!filterByDate} dateRange={dateRange} setDateRange={setDateRange} />
             </Box>
-            <MiradorDialog manifest={viewerManifest} handleClose={onViewerClose} />
+            <UVDialog manifest={viewerManifest} handleClose={onViewerClose} />
             {filteredManifests.map( (manifest, idx)  => (
                 <Box maxWidth={200} sx={{float:"left"}} p={1} display="block" key={manifest.uri}>
                     <ManifestCard manifest={manifest} onSelect={onSelectFocusManifest} isSelected={manifest === focusManifest} onShowInViewer={setViewerManifest} />
