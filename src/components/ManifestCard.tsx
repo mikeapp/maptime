@@ -51,7 +51,6 @@ const ManifestCard = ({manifest, onSelect, isSelected, onShowInViewer}: Manifest
             <Box sx={{clear:"left"}}>
                 { (manifest.navPlace()) ? <MapIcon color={isSelected? "primary" : "inherit"} /> : <MapIcon color="disabled" sx={{opacity: '50%'}} /> }
             </Box>
-
         </CardContent>
     </Card>;
 

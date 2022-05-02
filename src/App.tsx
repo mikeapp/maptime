@@ -76,7 +76,7 @@ function App() {
                     <LeafletMapContainer manifests={filteredManifests} focus={focusManifest}/>
                 </div>
             </Box>
-            <Box pt={2}>
+            <Box p={2}>
                 <Checkbox checked={filterByDate} onChange={(e) => {setFilterByDate( e.target.checked)}} />
                 <Typography variant="body1" display="inline-block" pl={2} pr={4} sx={{clear:"none"}}>Limit by date range:</Typography>
                 <DateRangeSlider collection={collection} disabled={!filterByDate} dateRange={dateRange} setDateRange={setDateRange} />
