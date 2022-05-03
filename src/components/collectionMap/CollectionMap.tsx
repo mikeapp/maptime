@@ -14,7 +14,7 @@ type CollectionMapProperties = {
 
 const CollectionMap = ({collection}: CollectionMapProperties) => {
     const [filterByDate, setFilterByDate] = useState(false);
-    const [collectionLabel, setCollectionLabel] = useState<any | null>("loading");
+
     const [manifests, setManifests] = useState<Array<Manifest>>([]);
     const [focusManifest, setFocusManifest] = useState<Manifest | null>(null);
     const [filteredManifests, setFilteredManifests] = useState<Array<Manifest>>([]);
@@ -34,9 +34,7 @@ const CollectionMap = ({collection}: CollectionMapProperties) => {
     }
 
     useEffect(()=>{
-        const l = collection.iiif?.getDefaultLabel();
         let m = collection.manifests();
-        setCollectionLabel(l);
         setManifests(m)
     }, [collection]);
 
@@ -57,12 +55,6 @@ const CollectionMap = ({collection}: CollectionMapProperties) => {
 
     return (
         <>
-            <AppBar position="fixed">
-                <Toolbar sx={{backgroundColor:"dimgray"}}>
-                    <Typography variant="h5" component="h1" p={2}>{collectionLabel}</Typography>
-                </Toolbar>
-            </AppBar>
-            <Toolbar/>
             <Box hidden={!collection?.manifests().some((manifest) => manifest.navPlace())}>
                 <div className="row">
                     <LeafletMapContainer manifests={filteredManifests} focus={focusManifest}/>
