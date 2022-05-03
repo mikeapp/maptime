@@ -24,7 +24,7 @@ const ManifestCard = ({manifest, onSelect, isSelected, onShowInViewer}: Manifest
     />
 
     const actionArea = () => {
-        if (onSelect && manifest.navDateYear() !== null) {
+        if (onSelect && manifest.navPlace() !== null) {
             return (
                 <CardActionArea
                     onClick={() => onSelect ? onSelect(manifest) : null}>
