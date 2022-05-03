@@ -71,12 +71,12 @@ function App() {
                 </Toolbar>
             </AppBar>
             <Toolbar/>
-            <Box>
+            <Box hidden={!collection?.manifests().some((manifest) => manifest.navPlace())}>
                 <div className="row">
                     <LeafletMapContainer manifests={filteredManifests} focus={focusManifest}/>
                 </div>
             </Box>
-            <Box hidden={!collection?.manifests().some((manifest) => manifest.navDateYear())}>
+            <Box hidden={!collection?.manifests().some((manifest) => manifest.navDateYear())} pt={2}>
                 <Checkbox checked={filterByDate} onChange={(e) => {
                     setFilterByDate(e.target.checked)
                 }}/>
