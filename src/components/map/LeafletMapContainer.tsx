@@ -10,6 +10,7 @@ interface MapContainerProps {
 
 export default function LeafletMapContainer({manifests, focus}:MapContainerProps) {
     const manifestsWithGeoJson = manifests.filter(manifest => manifest.navPlace());
+    if (manifestsWithGeoJson.length === 0) return (<></>);
     return (
         <MapContainer zoom={2}  className='LeafletContainer'>
             <Map manifests={manifestsWithGeoJson} focus={focus}  />

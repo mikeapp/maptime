@@ -76,15 +76,21 @@ function App() {
                     <LeafletMapContainer manifests={filteredManifests} focus={focusManifest}/>
                 </div>
             </Box>
-            <Box>
-                <Checkbox checked={filterByDate} onChange={(e) => {setFilterByDate( e.target.checked)}} />
+            <Box hidden={!collection?.manifests().some((manifest) => manifest.navDateYear())}>
+                <Checkbox checked={filterByDate} onChange={(e) => {
+                    setFilterByDate(e.target.checked)
+                }}/>
                 <Typography variant="body1" display="inline-block"  pr={4} sx={{clear:"none"}}>Limit by date range:</Typography>
                 <DateRangeSlider collection={collection} disabled={!filterByDate} dateRange={dateRange} setDateRange={setDateRange} />
             </Box>
             <UVDialog manifest={viewerManifest} handleClose={onViewerClose} />
             {filteredManifests.map( (manifest, idx)  => (
                 <Box maxWidth={200} sx={{float:"left"}} p={1} display="block" key={manifest.uri}>
-                    <ManifestCard manifest={manifest} onSelect={onSelectFocusManifest} isSelected={manifest === focusManifest} onShowInViewer={setViewerManifest} />
+                    <ManifestCard
+                        manifest={manifest}
+                        onSelect={onSelectFocusManifest}
+                        isSelected={manifest === focusManifest}
+                        onShowInViewer={setViewerManifest} />
                 </Box>
             ))}
             <MapCopyright />

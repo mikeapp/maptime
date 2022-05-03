@@ -27,5 +27,4 @@ export class Collection {
     features() {
         return this.allManifests.map( manifest => manifest.navPlace()?.['features']?.[0] ).filter( v => v !== undefined);
     }
-
 }
