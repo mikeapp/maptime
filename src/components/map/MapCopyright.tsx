@@ -3,7 +3,7 @@ import React from "react";
 
 const MapCopyright = () =>
     <Box display="block" p={2} sx={{clear:"left"}}>
-        <p className="copyright">Map data &copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors</p>
+        <p className="leafletMapCopyright">Map data &copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors</p>
     </Box>
 
 export default MapCopyright;

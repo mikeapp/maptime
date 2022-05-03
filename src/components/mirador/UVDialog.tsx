@@ -3,7 +3,6 @@ import {AppBar, Box, Container, Dialog, IconButton, Toolbar, Typography} from "@
 import CloseIcon from '@mui/icons-material/Close';
 import {Manifest} from "../../iiif/Manifest";
 import UVCard from "./UVCard";
-import "./UVDialog.css"
 
 type MiradorDialogProps = {
     manifest: Manifest | null;
