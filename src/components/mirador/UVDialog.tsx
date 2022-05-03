@@ -17,7 +17,7 @@ const UVDialog = ({manifest, handleClose}: MiradorDialogProps) => {
             open={manifest !== null}
             onClose={handleClose}
         >
-                <AppBar position="sticky">
+                <AppBar position="fixed">
                     <Toolbar sx={{backgroundColor:"dimgray"}}>
                         <IconButton
                             edge="start"
@@ -30,6 +30,7 @@ const UVDialog = ({manifest, handleClose}: MiradorDialogProps) => {
                         <Typography variant="h5" component="h1" p={2}>Item View</Typography>
                     </Toolbar>
                 </AppBar>
+                <Toolbar/>
                 <UVCard manifest={manifest} />
         </Dialog>
     );

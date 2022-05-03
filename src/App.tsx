@@ -65,19 +65,20 @@ function App() {
 
     return (
         <>
-            <AppBar position="sticky">
+            <AppBar position="fixed">
                 <Toolbar sx={{backgroundColor:"dimgray"}}>
                     <Typography variant="h5" component="h1" p={2}>{collectionLabel}</Typography>
                 </Toolbar>
             </AppBar>
+            <Toolbar/>
             <Box>
                 <div className="row">
                     <LeafletMapContainer manifests={filteredManifests} focus={focusManifest}/>
                 </div>
             </Box>
-            <Box p={2}>
+            <Box>
                 <Checkbox checked={filterByDate} onChange={(e) => {setFilterByDate( e.target.checked)}} />
-                <Typography variant="body1" display="inline-block" pl={2} pr={4} sx={{clear:"none"}}>Limit by date range:</Typography>
+                <Typography variant="body1" display="inline-block"  pr={4} sx={{clear:"none"}}>Limit by date range:</Typography>
                 <DateRangeSlider collection={collection} disabled={!filterByDate} dateRange={dateRange} setDateRange={setDateRange} />
             </Box>
             <UVDialog manifest={viewerManifest} handleClose={onViewerClose} />

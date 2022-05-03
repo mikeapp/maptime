@@ -3,7 +3,7 @@ import React from "react";
 import {Manifest} from "../iiif/Manifest";
 import MapIcon from '@mui/icons-material/Map';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
-import OpenInFullIcon from '@mui/icons-material/OpenInFull';
+import ZoomInIcon from '@mui/icons-material/ZoomIn';
 
 type ManifestCardProps = {
     manifest: Manifest;
@@ -33,9 +33,8 @@ const ManifestCard = ({manifest, onSelect, isSelected, onShowInViewer}: Manifest
                 height={60}
                 sx={{"WebkitLineClamp":3}}
                 >{manifest.label()}</Typography>
-            <Box sx={{clear:"both"}}>
-                <IconButton sx={{float:"right"}} size="small" onClick={() => onShowInViewer? onShowInViewer(manifest) : null}><OpenInFullIcon /></IconButton>
-            </Box>
+
+
             <Box sx={{clear:"both"}}>
             { (manifest.navDateYear()) ?
                 <div>
@@ -50,6 +49,7 @@ const ManifestCard = ({manifest, onSelect, isSelected, onShowInViewer}: Manifest
             </Box>
             <Box sx={{clear:"left"}}>
                 { (manifest.navPlace()) ? <MapIcon color={isSelected? "primary" : "inherit"} /> : <MapIcon color="disabled" sx={{opacity: '50%'}} /> }
+                <IconButton sx={{float:"right"}} size="small" onClick={() => onShowInViewer? onShowInViewer(manifest) : null}><ZoomInIcon /></IconButton>
             </Box>
         </CardContent>
     </Card>;
