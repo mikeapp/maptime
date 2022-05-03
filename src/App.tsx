@@ -1,13 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import './App.css';
-import LeafletMapContainer from "./components/map/LeafletMapContainer";
-import {Manifest} from "./iiif/Manifest";
 import {Collection} from "./iiif/Collection";
-import {AppBar, Box, Checkbox, Toolbar, Typography} from "@mui/material";
-import ManifestCard from "./components/ManifestCard";
-import MapCopyright from "./components/map/MapCopyright";
-import DateRangeSlider from "./components/dateRange/DateRangeSlider";
-import UVDialog from "./components/mirador/UVDialog";
+import {AppBar, Toolbar, Typography} from "@mui/material";
 import CollectionMap from "./components/collectionMap/CollectionMap";
 
 function App() {

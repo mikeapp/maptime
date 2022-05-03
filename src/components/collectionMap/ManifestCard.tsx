@@ -1,6 +1,6 @@
 import {Box, Button, Card, CardActionArea, CardContent, CardMedia, IconButton, Typography} from "@mui/material";
 import React from "react";
-import {Manifest} from "../iiif/Manifest";
+import {Manifest} from "../../iiif/Manifest";
 import MapIcon from '@mui/icons-material/Map';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import ZoomInIcon from '@mui/icons-material/ZoomIn';
