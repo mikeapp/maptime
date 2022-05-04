@@ -9,8 +9,8 @@ const UVCard = ({manifest} : UVCardProp) => {
     return (
           <CardMedia
             component="iframe"
-            sx={{height:"90%"}}
-            src={"https://collections.library.yale.edu/uv/uv.html#?manifest=" + manifest?.uri}
+            sx={{height:"100vh"}}
+            src={"./uv.html#?manifest=" + manifest?.uri}
           />
     );
 }

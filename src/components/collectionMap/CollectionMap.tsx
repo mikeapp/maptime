@@ -4,7 +4,7 @@ import {Manifest} from "../../iiif/Manifest";
 import {AppBar, Box, Checkbox, Toolbar, Typography} from "@mui/material";
 import LeafletMapContainer from "../map/LeafletMapContainer";
 import DateRangeSlider from "../dateRange/DateRangeSlider";
-import UVDialog from "../mirador/UVDialog";
+import UVDialog from "../uv/UVDialog";
 import ManifestCard from "./ManifestCard";
 import MapCopyright from "../map/MapCopyright";
 
