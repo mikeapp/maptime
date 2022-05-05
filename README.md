@@ -1,6 +1,6 @@
 # MapTime
 
-A React component that displays a IIIF Presentation API collection with a map and timeline. This is currently a proof of concept and a work in progress.
+A React component that displays a [IIIF Presentation API](https://iiif.io/api/presentation/3.0/) [Collection](https://iiif.io/api/presentation/3.0/#51-collection) with a map and timeline. This is currently a work in progress.
 
 A [live demo](https://mikeapp.github.io/maptime-demo/?collection=https://mikeapp.github.io/manifest-fixtures/collection/test.json) is available.
 
@@ -10,19 +10,19 @@ A [live demo](https://mikeapp.github.io/maptime-demo/?collection=https://mikeapp
 
 ### Application
 
-Supply the URI of the collection using the `collection` parameter.  For example:
+Supply the URI of the Collection using the `collection` parameter.  For example:
 
 https://mikeapp.github.io/maptime-demo/?collection=https://mikeapp.github.io/manifest-fixtures/collection/test.json
 
-If no manifest within the collection contains the `navPlace` property, the map will not be displayed. 
-Similarly if no manifest contains the `navDate` property, the date range slider will not be displayed. For example:
+If no Manifest within the Collection contains the [`navPlace` property](https://iiif.io/api/extension/navplace/), the map will not be displayed. 
+Similarly, if no Manifest contains the [`navDate` property](https://iiif.io/api/presentation/3.0/#navdate), the date range slider will not be displayed. For example:
 
 https://mikeapp.github.io/maptime-demo/?collection=https://www.e-codices.unifr.ch/metadata/iiif/collection/aev.json
 
 
 ### Component
 
-The `CollectionMap` component requires a `collection` property that contains the URI of the IIIF Collection to be loaded.
+The `CollectionMap` component requires a `collection` property that contains the URI of the Collection to be loaded.
 
 ```javascript
 <CollectionMap collection="https://mikeapp.github.io/manifest-fixtures/collection/test.json" />
