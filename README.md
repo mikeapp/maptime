@@ -14,7 +14,7 @@ Supply the URI of the collection using the `collection` parameter.  For example:
 
 https://mikeapp.github.io/maptime-demo/?collection=https://mikeapp.github.io/manifest-fixtures/collection/test.json
 
-If no manifest contained in the collection contains the `navPlace` property, the map will not be displayed. 
+If no manifest within the collection contains the `navPlace` property, the map will not be displayed. 
 Similarly if no manifest contains the `navDate` property, the date range slider will not be displayed. For example:
 
 https://mikeapp.github.io/maptime-demo/?collection=https://www.e-codices.unifr.ch/metadata/iiif/collection/aev.json
