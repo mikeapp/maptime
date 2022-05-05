@@ -28,4 +28,4 @@ The `CollectionMap` component requires a `collection` property that contains the
 <CollectionMap collection="https://mikeapp.github.io/manifest-fixtures/collection/test.json" />
 ```
 
-The application expects the `uv.html` viewer page to be available in the same directory.
+The component expects the `uv.html` viewer page to be available in the same directory.
