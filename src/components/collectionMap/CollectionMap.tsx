@@ -77,7 +77,9 @@ const CollectionMap = ({collection}: CollectionMapProperties) => {
                         onShowInViewer={setViewerManifest} />
                 </Box>
             ))}
-            <MapCopyright />
+            <Box hidden={!collection?.manifests().some((manifest) => manifest.navPlace())}>
+                <MapCopyright />
+            </Box>
         </>
     );
 
