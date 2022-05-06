@@ -25,7 +25,26 @@ https://mikeapp.github.io/maptime-demo/?collection=https://www.e-codices.unifr.c
 The `CollectionMap` component requires a `collection` property that contains the URI of the Collection to be loaded.
 
 ```javascript
-<CollectionMap collection="https://mikeapp.github.io/manifest-fixtures/collection/test.json" />
+<CollectionMap collection={myCollection} />
 ```
 
-The component expects the `uv.html` viewer page to be available in the same directory.
+The component requires `react` and `react-dom` version `^17.0.2`.
+The component expects the UniversalViewer to be available at `uv.html` in the same directory.
+The component requires the following stylesheets:
+```
+    <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+    />
+    <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+
+    <link
+            rel="stylesheet"
+            href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+            integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+            crossorigin=""
+    />
+```
