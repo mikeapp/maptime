@@ -1,9 +1,8 @@
 import {MapContainer} from 'react-leaflet';
 import Map from "./Map";
-import React from "react";
+import React, {CSSProperties} from "react";
 import {Manifest} from "../../iiif/Manifest";
-import {Stack, Typography} from "@mui/material";
-import "./LeafletMapContainer.css";
+import {Box, Stack, Typography} from "@mui/material";
 
 interface MapContainerProps {
     manifests:Manifest[];
@@ -12,14 +11,19 @@ interface MapContainerProps {
 
 export default function LeafletMapContainer({manifests, focus}:MapContainerProps) {
     const manifestsWithGeoJson = manifests.filter(manifest => manifest.navPlace());
+    const mapStyle:CSSProperties = {
+        justifyContent:"center",
+        width:"100%",
+        height:"45vh",
+        clear:"both",
+        margin:"auto"
+    };
     return manifestsWithGeoJson.length === 0?
-        <Stack className='LeafletContainer'
-               justifyContent="center"
-               alignItems="center">
+        <Box sx={mapStyle}>
             <Typography>No mappable items</Typography>
-        </Stack>
+        </Box>
         :
-        <MapContainer zoom={2}  className='LeafletContainer'>
+        <MapContainer zoom={2} style={mapStyle}>
             <Map manifests={manifestsWithGeoJson} focus={focus}  />
         </MapContainer>
     ;
