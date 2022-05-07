@@ -1,5 +1,5 @@
 import {MapContainer} from 'react-leaflet';
-import Map from "./Map";
+import ManifestMap from "./ManifestMap";
 import React, {CSSProperties} from "react";
 import {Manifest} from "../../iiif/Manifest";
 import {Box, Stack, Typography} from "@mui/material";
@@ -9,7 +9,7 @@ interface MapContainerProps {
     focus?: Manifest | null;
 }
 
-export default function LeafletMapContainer({manifests, focus}:MapContainerProps) {
+export default function ManifestMapContainer({manifests, focus}:MapContainerProps) {
     const manifestsWithGeoJson = manifests.filter(manifest => manifest.navPlace());
     const mapStyle:CSSProperties = {
         justifyContent:"center",
@@ -24,7 +24,7 @@ export default function LeafletMapContainer({manifests, focus}:MapContainerProps
         </Box>
         :
         <MapContainer zoom={2} style={mapStyle}>
-            <Map manifests={manifestsWithGeoJson} focus={focus}  />
+            <ManifestMap manifests={manifestsWithGeoJson} focus={focus}  />
         </MapContainer>
     ;
 }

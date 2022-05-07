@@ -2,11 +2,11 @@ import {Collection} from "../../iiif/Collection";
 import React, {useEffect, useState} from "react";
 import {Manifest} from "../../iiif/Manifest";
 import {AppBar, Box, Checkbox, Toolbar, Typography} from "@mui/material";
-import LeafletMapContainer from "../map/LeafletMapContainer";
+import ManifestMapContainer from "../map/ManifestMapContainer";
 import DateRangeSlider from "../dateRange/DateRangeSlider";
 import UVDialog from "../uv/UVDialog";
 import ManifestCard from "./ManifestCard";
-import MapCopyright from "../map/MapCopyright";
+import ManifestMapCopyright from "../map/ManifestMapCopyright";
 
 type CollectionMapProperties = {
     collection: Collection;
@@ -57,7 +57,7 @@ const CollectionMap = ({collection}: CollectionMapProperties) => {
         <>
             <Box hidden={!collection?.manifests().some((manifest) => manifest.navPlace())}>
                 <div className="row">
-                    <LeafletMapContainer manifests={filteredManifests} focus={focusManifest}/>
+                    <ManifestMapContainer manifests={filteredManifests} focus={focusManifest}/>
                 </div>
             </Box>
             <Box hidden={!collection?.manifests().some((manifest) => manifest.navDateYear())} pt={2}>
@@ -78,7 +78,7 @@ const CollectionMap = ({collection}: CollectionMapProperties) => {
                 </Box>
             ))}
             <Box hidden={!collection?.manifests().some((manifest) => manifest.navPlace())}>
-                <MapCopyright />
+                <ManifestMapCopyright />
             </Box>
         </>
     );

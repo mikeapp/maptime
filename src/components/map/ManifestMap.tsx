@@ -23,7 +23,7 @@ const blueMarker = (geoJsonPoint:any, latlng: LatLng) => {
     return new L.Marker(latlng, {icon: blueIcon});
 }
 
-export default function Map({manifests, focus}:MapProps) {
+export default function ManifestMap({manifests, focus}:MapProps) {
     const [geoJsonComponent, setGeoJsonComponent] = useState<null | Array<ReactElement>>(null);
     const map = useMap();
 
@@ -35,7 +35,7 @@ export default function Map({manifests, focus}:MapProps) {
             map.fitWorld();
         } else {
             setGeoJsonComponent(geoJson.map((data: any, index: number) => (<GeoJSON
-                key={"Map:" + manifests[index].uri}
+                key={"ManifestMap:" + manifests[index].uri}
                 data={data}
                 pointToLayer={blueMarker}
                 style={{color: 'blue'}}
