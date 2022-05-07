@@ -14,22 +14,29 @@ Supply the URI of the Collection using the `collection` parameter.  For example:
 
 https://mikeapp.github.io/maptime-demo/?collection=https://mikeapp.github.io/manifest-fixtures/collection/test.json
 
-If no Manifest within the Collection contains the [`navPlace` property](https://iiif.io/api/extension/navplace/), the map will not be displayed. 
+If no Manifest within the Collection contains the [`navPlace` property](https://iiif.io/api/extension/navplace/), the map will not be displayed.
 Similarly, if no Manifest contains the [`navDate` property](https://iiif.io/api/presentation/3.0/#navdate), the date range slider will not be displayed. For example:
 
 https://mikeapp.github.io/maptime-demo/?collection=https://www.e-codices.unifr.ch/metadata/iiif/collection/aev.json
 
-
 ### Component
 
-The `CollectionMap` component requires a `collection` property that contains the URI of the Collection to be loaded.
+The `CollectionMap` component requires two properties:
+- A `collection` property that contains a `Collection` 
+- A `viewerPath` that contains the path or URL of a IIIF viewer instance that will be displayed in a full screen dialog. The manifest URI will be appended when a viewer is instantiated.
 
+Instantiating a `Collection`:
 ```javascript
-<CollectionMap collection={myCollection} />
+const myCollection = new Collection("https://mikeapp.github.io/manifest-fixtures/collection/test.json");
+await c.fetch();
+```
+Using the component, assuming UniversalViewer is available:
+```javascript
+<CollectionMap collection={myCollection}  viewerPath="./uv.html#?manifest=" />
 ```
 
-The component requires `react` and `react-dom` version `^17.0.2`.
-The component expects the UniversalViewer to be available at `uv.html` in the same directory.
+### CSS
+
 The component requires the following stylesheets:
 ```
     <link
@@ -40,7 +47,6 @@ The component requires the following stylesheets:
             rel="stylesheet"
             href="https://fonts.googleapis.com/icon?family=Material+Icons"
     />
-
     <link
             rel="stylesheet"
             href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
@@ -48,3 +54,6 @@ The component requires the following stylesheets:
             crossorigin=""
     />
 ```
+
+### Peer Dependencies
+In addition to React libraries, this component requires Material UI and Manifesto.
