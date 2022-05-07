@@ -27,7 +27,7 @@ function App() {
 
     const collectionMap = () => {
         return collection !== null?
-            <CollectionMap collection={collection} />
+            <CollectionMap collection={collection} viewerPath="./uv.html#?manifest=" />
             :
             <></>
     }

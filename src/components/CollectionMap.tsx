@@ -10,11 +10,11 @@ import ManifestMapCopyright from "./ManifestMapCopyright";
 
 type CollectionMapProperties = {
     collection: Collection;
+    viewerPath: string;
 }
 
-const CollectionMap = ({collection}: CollectionMapProperties) => {
+const CollectionMap = ({collection, viewerPath}: CollectionMapProperties) => {
     const [filterByDate, setFilterByDate] = useState(false);
-
     const [manifests, setManifests] = useState<Array<Manifest>>([]);
     const [focusManifest, setFocusManifest] = useState<Manifest | null>(null);
     const [filteredManifests, setFilteredManifests] = useState<Array<Manifest>>([]);
@@ -67,7 +67,7 @@ const CollectionMap = ({collection}: CollectionMapProperties) => {
                 <Typography variant="body1" display="inline-block"  pr={4} sx={{clear:"none"}}>Limit by date range:</Typography>
                 <DateRangeSlider collection={collection} disabled={!filterByDate} dateRange={dateRange} setDateRange={setDateRange} />
             </Box>
-            <UVDialog manifest={viewerManifest} handleClose={onViewerClose} />
+            <UVDialog manifest={viewerManifest} handleClose={onViewerClose} viewerPath={viewerPath}/>
             {filteredManifests.map( (manifest, idx)  => (
                 <Box maxWidth={200} sx={{float:"left"}} p={1} display="block" key={manifest.uri}>
                     <ManifestCard

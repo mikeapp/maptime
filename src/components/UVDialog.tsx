@@ -4,12 +4,13 @@ import CloseIcon from '@mui/icons-material/Close';
 import {Manifest} from "../iiif/Manifest";
 import UVCard from "./UVCard";
 
-type MiradorDialogProps = {
+type UVDialogProps = {
     manifest: Manifest | null;
     handleClose: () => void;
+    viewerPath: string;
 }
 
-const UVDialog = ({manifest, handleClose}: MiradorDialogProps) => {
+const UVDialog = ({manifest, handleClose, viewerPath}: UVDialogProps) => {
     return(
         <Dialog
             fullScreen
@@ -30,7 +31,7 @@ const UVDialog = ({manifest, handleClose}: MiradorDialogProps) => {
                     </Toolbar>
                 </AppBar>
                 <Toolbar/>
-                <UVCard manifest={manifest} />
+                <UVCard manifest={manifest} viewerPath={viewerPath}/>
         </Dialog>
     );
 }

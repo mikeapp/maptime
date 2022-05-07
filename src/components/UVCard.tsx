@@ -3,14 +3,15 @@ import {Manifest} from "../iiif/Manifest";
 
 type UVCardProp = {
     manifest: Manifest | null;
+    viewerPath: string;
 }
 
-const UVCard = ({manifest} : UVCardProp) => {
+const UVCard = ({manifest, viewerPath} : UVCardProp) => {
     return (
           <CardMedia
             component="iframe"
             sx={{height:"100vh"}}
-            src={"./uv.html#?manifest=" + manifest?.uri}
+            src={viewerPath + manifest?.uri}
           />
     );
 }
