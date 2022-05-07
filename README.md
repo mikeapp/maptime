@@ -23,7 +23,7 @@ https://mikeapp.github.io/maptime-demo/?collection=https://www.e-codices.unifr.c
 
 The `CollectionMap` component requires two properties:
 - A `collection` property that contains a `Collection` 
-- A `viewerPath` that contains the path or URL of a IIIF viewer instance that will be displayed in a full screen dialog. The manifest URI will be appended when a viewer is instantiated.
+- A `viewerPath` that contains the path or URL of a IIIF viewer instance that will be displayed within an `<iframe>` in a full screen dialog. The manifest URI will be appended when a viewer is instantiated.
 
 Note that the collection should be initialized before being passed to the component.  The `App.tsx` file in this project's Github repo demonstrates basic error handling and displays a progress indicator while the Collection's Manifests are downloaded.  
 The `Collection`'s `fetch` method can be passed a callback function that will be updated with the percentage of manifests downloaded.
