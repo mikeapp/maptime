@@ -1,7 +1,7 @@
 import {MapContainer} from 'react-leaflet';
 import ManifestMap from "./ManifestMap";
 import React, {CSSProperties} from "react";
-import {Manifest} from "../../iiif/Manifest";
+import {Manifest} from "../iiif/Manifest";
 import {Box, Stack, Typography} from "@mui/material";
 
 interface MapContainerProps {

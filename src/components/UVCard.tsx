@@ -1,5 +1,5 @@
 import {Card, CardMedia} from "@mui/material";
-import {Manifest} from "../../iiif/Manifest";
+import {Manifest} from "../iiif/Manifest";
 
 type UVCardProp = {
     manifest: Manifest | null;

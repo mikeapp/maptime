@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import './App.css';
 import {Collection} from "./iiif/Collection";
 import {AppBar, Toolbar, Typography} from "@mui/material";
-import CollectionMap from "./components/collectionMap/CollectionMap";
+import CollectionMap from "./components/CollectionMap";
 
 function App() {
     const [collectionURI, setCollectionURI] = useState(new URLSearchParams(window.location.search).get("collection") || 'https://mikeapp.github.io/manifest-fixtures/collection/test.json')

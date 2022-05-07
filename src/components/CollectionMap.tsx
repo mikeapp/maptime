@@ -1,12 +1,12 @@
-import {Collection} from "../../iiif/Collection";
+import {Collection} from "../iiif/Collection";
 import React, {useEffect, useState} from "react";
-import {Manifest} from "../../iiif/Manifest";
+import {Manifest} from "../iiif/Manifest";
 import {AppBar, Box, Checkbox, Toolbar, Typography} from "@mui/material";
-import ManifestMapContainer from "../map/ManifestMapContainer";
-import DateRangeSlider from "../dateRange/DateRangeSlider";
-import UVDialog from "../uv/UVDialog";
+import ManifestMapContainer from "./ManifestMapContainer";
+import DateRangeSlider from "./DateRangeSlider";
+import UVDialog from "./UVDialog";
 import ManifestCard from "./ManifestCard";
-import ManifestMapCopyright from "../map/ManifestMapCopyright";
+import ManifestMapCopyright from "./ManifestMapCopyright";
 
 type CollectionMapProperties = {
     collection: Collection;

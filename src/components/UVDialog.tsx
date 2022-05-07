@@ -1,7 +1,7 @@
 import React from "react";
 import {AppBar, Box, Container, Dialog, IconButton, Toolbar, Typography} from "@mui/material";
 import CloseIcon from '@mui/icons-material/Close';
-import {Manifest} from "../../iiif/Manifest";
+import {Manifest} from "../iiif/Manifest";
 import UVCard from "./UVCard";
 
 type MiradorDialogProps = {

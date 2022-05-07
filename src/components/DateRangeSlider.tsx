@@ -1,7 +1,7 @@
 import {Slider} from "@mui/material";
 import React from "react";
-import {Manifest} from "../../iiif/Manifest";
-import {Collection} from "../../iiif/Collection";
+import {Manifest} from "../iiif/Manifest";
+import {Collection} from "../iiif/Collection";
 
 type DateRangeSliderProps = {
     collection: Collection | null;
