@@ -11,12 +11,18 @@ export class Collection {
         this.iiif = null;
     }
 
-    async fetch() {
+    async fetch(setProgress?: (percent: number) => void) {
+        let progress = 0;
+        if (setProgress) setProgress(progress);
         const response = await fetch(this.uri);
         const json = await response.json();
         this.iiif = Deserialiser.parseCollection(json);
-        this.allManifests = this.iiif.getManifests().map( m => new Manifest(m.id));
-        await Promise.all(this.allManifests.map(m => m.fetch()));
+        let manifestCount = this.iiif.getManifests().length;
+        this.allManifests = this.iiif.getManifests().map(m => new Manifest(m.id));
+        await Promise.all(this.allManifests.map(m => m.fetch().then(() => {
+            progress = progress + Math.round(100 / manifestCount)
+            if (setProgress) setProgress(progress);
+        })));
         return this.iiif;
     }
 
