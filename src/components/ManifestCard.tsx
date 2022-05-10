@@ -17,7 +17,7 @@ const ManifestCard = ({manifest, onSelect, isSelected, onShowInViewer}: Manifest
 
     const cardMedia = () => <CardMedia
         component="img"
-        image={manifest?.thumb(200)}
+        image={manifest?.thumb(300)}
         alt={manifest.label()}
         height={160}
         key={manifest.uri}

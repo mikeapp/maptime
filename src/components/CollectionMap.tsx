@@ -1,7 +1,7 @@
 import {Collection} from "../iiif/Collection";
 import React, {useEffect, useState} from "react";
 import {Manifest} from "../iiif/Manifest";
-import {AppBar, Box, Checkbox, Toolbar, Typography} from "@mui/material";
+import {AppBar, Box, Checkbox, Container, Grid, Toolbar, Typography} from "@mui/material";
 import ManifestMapContainer from "./ManifestMapContainer";
 import DateRangeSlider from "./DateRangeSlider";
 import UVDialog from "./UVDialog";
@@ -68,15 +68,17 @@ const CollectionMap = ({collection, viewerPath}: CollectionMapProperties) => {
                 <DateRangeSlider collection={collection} disabled={!filterByDate} dateRange={dateRange} setDateRange={setDateRange} />
             </Box>
             <UVDialog manifest={viewerManifest} handleClose={onViewerClose} viewerPath={viewerPath}/>
+            <Grid container mt={2} spacing={2} p={1} height="50vh" sx={{overflowY:"auto"}}>
             {filteredManifests.map( (manifest, idx)  => (
-                <Box maxWidth={200} sx={{float:"left"}} p={1} display="block" key={manifest.uri}>
+                <Grid item xs={4} sm={3} m={2} lg={2} key={manifest.uri}>
                     <ManifestCard
                         manifest={manifest}
                         onSelect={onSelectFocusManifest}
                         isSelected={manifest === focusManifest}
                         onShowInViewer={setViewerManifest} />
-                </Box>
+                </Grid>
             ))}
+            </Grid>
             <Box hidden={!collection?.manifests().some((manifest) => manifest.navPlace())}>
                 <ManifestMapCopyright />
             </Box>
