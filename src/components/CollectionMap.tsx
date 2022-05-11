@@ -1,7 +1,8 @@
 import {Collection} from "../iiif/Collection";
 import React, {useEffect, useState} from "react";
 import {Manifest} from "../iiif/Manifest";
-import {AppBar, Box, Checkbox, Container, Grid, Toolbar, Typography} from "@mui/material";
+import {AppBar, Box, IconButton, Checkbox, Container, Grid, Toolbar, Typography, Button} from "@mui/material";
+import TimelineIcon from '@mui/icons-material/Timeline';
 import ManifestMapContainer from "./ManifestMapContainer";
 import DateRangeSlider from "./DateRangeSlider";
 import UVDialog from "./UVDialog";
@@ -61,10 +62,15 @@ const CollectionMap = ({collection, viewerPath}: CollectionMapProperties) => {
                 </div>
             </Box>
             <Box hidden={!collection?.manifests().some((manifest) => manifest.navDateYear())} pt={2}>
-                <Checkbox checked={filterByDate} onChange={(e) => {
-                    setFilterByDate(e.target.checked)
-                }}/>
-                <Typography variant="body1" display="inline-block"  pr={4} sx={{clear:"none"}}>Limit by date range:</Typography>
+                <Box mr={2} ml={2} component="span">
+                    <Button
+                        size="small"
+                        variant={filterByDate? "contained" : "outlined"}
+                        onClick={(e:any) => setFilterByDate(!filterByDate)}
+                        startIcon={<TimelineIcon/>}>
+                        {filterByDate? "Remove date range limit" : "Limit by date range"}
+                    </Button>
+                </Box>
                 <DateRangeSlider collection={collection} disabled={!filterByDate} dateRange={dateRange} setDateRange={setDateRange} />
             </Box>
             <UVDialog manifest={viewerManifest} handleClose={onViewerClose} viewerPath={viewerPath}/>
