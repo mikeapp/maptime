@@ -68,7 +68,7 @@ const CollectionMap = ({collection, viewerPath}: CollectionMapProperties) => {
                 <DateRangeSlider collection={collection} disabled={!filterByDate} dateRange={dateRange} setDateRange={setDateRange} />
             </Box>
             <UVDialog manifest={viewerManifest} handleClose={onViewerClose} viewerPath={viewerPath}/>
-            <Grid container mt={2} spacing={2} p={1} height="50vh" sx={{overflowY:"auto"}}>
+            <Grid container mt={2} mr={2} ml={2} spacing={2} p={1} height="48vh" sx={{overflowY:"auto"}}>
             {filteredManifests.map( (manifest, idx)  => (
                 <Grid item xs={4} sm={3} m={2} lg={2} key={manifest.uri}>
                     <ManifestCard
