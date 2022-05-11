@@ -55,7 +55,8 @@ const CollectionMap = ({collection, viewerPath}: CollectionMapProperties) => {
     }, [manifests, filterByDate, dateRange]);
 
     const dateSlider = () => {
-        return <Box hidden={!collection?.manifests().some((manifest) => manifest.navDateYear())} pt={4}>
+        return <Box pt={4} mr={5} ml={5}
+                    hidden={!collection?.manifests().some((manifest) => manifest.navDateYear())}>
             <Box mr={3} ml={2} component="span">
                 <Button
                     size="small"
