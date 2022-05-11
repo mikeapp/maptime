@@ -54,6 +54,27 @@ const CollectionMap = ({collection, viewerPath}: CollectionMapProperties) => {
         setFilteredManifests(_filteredManifests);
     }, [manifests, filterByDate, dateRange]);
 
+    const dateSlider = () => {
+        return <Box hidden={!collection?.manifests().some((manifest) => manifest.navDateYear())} pt={4}>
+            <Box mr={3} ml={2} component="span">
+                <Button
+                    size="small"
+                    variant={filterByDate? "contained" : "outlined"}
+                    onClick={(e:any) => setFilterByDate(!filterByDate)}
+                    startIcon={<TimelineIcon/>}>
+                    {filterByDate? "Remove date limit" : "Limit by date range"}
+                </Button>
+            </Box>
+            <DateRangeSlider collection={collection} disabled={!filterByDate} dateRange={dateRange} setDateRange={setDateRange} />
+        </Box>;
+    }
+
+    const mapCopyright = () => {
+        return <Box hidden={!collection?.manifests().some((manifest) => manifest.navPlace())}>
+            <ManifestMapCopyright />
+        </Box>;
+    }
+
     return (
         <>
             <Box hidden={!collection?.manifests().some((manifest) => manifest.navPlace())}>
@@ -61,20 +82,9 @@ const CollectionMap = ({collection, viewerPath}: CollectionMapProperties) => {
                     <ManifestMapContainer manifests={filteredManifests} focus={focusManifest}/>
                 </div>
             </Box>
-            <Box hidden={!collection?.manifests().some((manifest) => manifest.navDateYear())} pt={2}>
-                <Box mr={2} ml={2} component="span">
-                    <Button
-                        size="small"
-                        variant={filterByDate? "contained" : "outlined"}
-                        onClick={(e:any) => setFilterByDate(!filterByDate)}
-                        startIcon={<TimelineIcon/>}>
-                        {filterByDate? "Remove date range limit" : "Limit by date range"}
-                    </Button>
-                </Box>
-                <DateRangeSlider collection={collection} disabled={!filterByDate} dateRange={dateRange} setDateRange={setDateRange} />
-            </Box>
+            { dateSlider() }
             <UVDialog manifest={viewerManifest} handleClose={onViewerClose} viewerPath={viewerPath}/>
-            <Grid container mt={2} mr={2} ml={2} spacing={2} p={1} height="48vh" sx={{overflowY:"auto"}}>
+            <Grid container mt={2} mr={2} ml={2} spacing={2} p={1} height="40vh" sx={{overflowY:"auto"}}>
             {filteredManifests.map( (manifest, idx)  => (
                 <Grid item xs={4} sm={3} m={2} lg={2} key={manifest.uri}>
                     <ManifestCard
@@ -85,9 +95,7 @@ const CollectionMap = ({collection, viewerPath}: CollectionMapProperties) => {
                 </Grid>
             ))}
             </Grid>
-            <Box hidden={!collection?.manifests().some((manifest) => manifest.navPlace())}>
-                <ManifestMapCopyright />
-            </Box>
+            { mapCopyright() }
         </>
     );
 

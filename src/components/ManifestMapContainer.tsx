@@ -14,7 +14,7 @@ export default function ManifestMapContainer({manifests, focus}:MapContainerProp
     const mapStyle:CSSProperties = {
         justifyContent:"center",
         width:"100%",
-        height:"45vh",
+        height:"40vh",
         clear:"both",
         margin:"auto"
     };
