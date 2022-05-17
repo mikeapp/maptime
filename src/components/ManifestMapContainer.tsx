@@ -16,8 +16,7 @@ export default function ManifestMapContainer({manifests, focus}:MapContainerProp
         width:"100%",
         height:"40vh",
         clear:"both",
-        margin:"auto",
-        position:"sticky"
+        margin:"auto"
     };
     return manifestsWithGeoJson.length === 0?
         <Box sx={mapStyle}>

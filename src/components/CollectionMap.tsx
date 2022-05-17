@@ -57,7 +57,7 @@ const CollectionMap = ({collection, viewerPath}: CollectionMapProperties) => {
     }, [manifests, filterByDate, dateRange]);
 
     const displayControls = () => {
-        return <Box pt={4}>
+        return <Box pt={4} pb={3} bgcolor="white">
             <Box ml={7} component="span">
                 <Button
                     size="small"
@@ -90,14 +90,15 @@ const CollectionMap = ({collection, viewerPath}: CollectionMapProperties) => {
 
     return (
         <>
-            <Box hidden={!collection?.manifests().some((manifest) => manifest.navPlace()) || !showMap}>
-                <div className="row">
+            <Box sx={{position:"sticky", top:0, zIndex: 5}}>
+                <Box className="row" hidden={!collection?.manifests().some((manifest) => manifest.navPlace()) || !showMap}>
                     <ManifestMapContainer manifests={filteredManifests} focus={focusManifest}/>
-                </div>
+                </Box>
+                { displayControls() }
             </Box>
-            { displayControls() }
+
             <UVDialog manifest={viewerManifest} handleClose={onViewerClose} viewerPath={viewerPath}/>
-            <Grid container mt={2} mr={2} ml={2} spacing={2} p={1}  sx={{overflowY:"auto"}}>
+            <Grid container mt={0} mr={2} ml={2} spacing={2} p={1}  sx={{overflowY:"auto"}}>
             {filteredManifests.map( (manifest, idx)  => (
                 <Grid item xs={4} sm={3} m={2} lg={2} key={manifest.uri}>
                     <ManifestCard

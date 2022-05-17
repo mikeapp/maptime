@@ -57,12 +57,11 @@ function App() {
 
     return (
         <>
-            <AppBar position="fixed">
+            <AppBar position="relative">
                 <Toolbar sx={{backgroundColor:"dimgray"}}>
                     <Typography variant="h5" component="h1" p={2}>{collectionLabel}</Typography>
                 </Toolbar>
             </AppBar>
-            <Toolbar/>
             {collectionMap()}
         </>
     );
