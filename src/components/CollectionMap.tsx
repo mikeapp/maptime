@@ -57,9 +57,10 @@ const CollectionMap = ({collection, viewerPath}: CollectionMapProperties) => {
     }, [manifests, filterByDate, dateRange]);
 
     const displayControls = () => {
-        return <Box pt={4} pb={3} bgcolor="white">
+        return <Box pt={4} pb={3} bgcolor="white" hidden={collectionHasNoNavDate(collection) && collectionHasNoNavPlace(collection)}>
             <Box ml={7} component="span">
                 <Button
+                    hidden={ collectionHasNoNavPlace(collection) }
                     size="small"
                     variant={showMap? "contained" : "outlined"}
                     onClick={(e:any) => setShowMap(!showMap)}
@@ -67,7 +68,7 @@ const CollectionMap = ({collection, viewerPath}: CollectionMapProperties) => {
                     {showMap? "Hide map" : "Show map"}
                 </Button>
             </Box>
-            <Box ml={2} component="span" hidden={!collection?.manifests().some((manifest) => manifest.navDateYear())}>
+            <Box ml={2} component="span" hidden={collectionHasNoNavDate(collection)}>
                 <Button
                     size="small"
                     variant={filterByDate? "contained" : "outlined"}
@@ -76,7 +77,7 @@ const CollectionMap = ({collection, viewerPath}: CollectionMapProperties) => {
                     {filterByDate? "Remove date limit" : "Limit by date range"}
                 </Button>
             </Box>
-            <Box ml={4} component="span" width={4}>
+            <Box ml={4} component="span" width={4} hidden={collectionHasNoNavDate(collection)}>
                 <DateRangeSlider collection={collection} disabled={!filterByDate} dateRange={dateRange} setDateRange={setDateRange} />
             </Box>
         </Box>;
@@ -88,10 +89,18 @@ const CollectionMap = ({collection, viewerPath}: CollectionMapProperties) => {
         </Box>;
     }
 
+    const collectionHasNoNavPlace = (collection: Collection) => {
+        return !collection?.manifests().some((manifest) => manifest.navPlace());
+    }
+
+    const collectionHasNoNavDate = (collection: Collection) => {
+        return !collection?.manifests().some((manifest) => manifest.navDateYear());
+    }
+
     return (
         <>
             <Box sx={{position:"sticky", top:0, zIndex: 5}}>
-                <Box className="row" hidden={!collection?.manifests().some((manifest) => manifest.navPlace()) || !showMap}>
+                <Box className="row" hidden={ collectionHasNoNavPlace(collection) || !showMap}>
                     <ManifestMapContainer manifests={filteredManifests} focus={focusManifest}/>
                 </Box>
                 { displayControls() }

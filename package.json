@@ -1,6 +1,6 @@
 {
   "name": "iiif-maptime",
-  "version": "0.1.10",
+  "version": "0.1.11",
   "private": false,
   "dependencies": {
     "@emotion/react": "^11.9.0",
