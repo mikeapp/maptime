@@ -2,7 +2,7 @@
 
 A React component that displays a [IIIF Presentation API](https://iiif.io/api/presentation/3.0/) [Collection](https://iiif.io/api/presentation/3.0/#51-collection) with a map and timeline. This is currently a work in progress.
 
-A [live demo](https://mikeapp.github.io/maptime-demo/?collection=https://mikeapp.github.io/manifest-fixtures/collection/test.json) is available.
+A [live demo](https://mikeapp.github.io/maptime-demo/?collection=https://mikeapp.github.io/manifest-fixtures/collection/test.json) and [a demo app](https://github.com/mikeapp/maptime-demo) are available.
 
 ![Screen capture](https://mikeapp.github.io/manifest-fixtures/images/maptimev0-1-0.png)
 
