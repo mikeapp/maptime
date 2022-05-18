@@ -4,7 +4,7 @@ A React component that displays a [IIIF Presentation API](https://iiif.io/api/pr
 
 A [live demo](https://mikeapp.github.io/maptime-demo/?collection=https://mikeapp.github.io/manifest-fixtures/collection/test.json) and [a demo app](https://github.com/mikeapp/maptime-demo) are available.
 
-![Screen capture](https://mikeapp.github.io/manifest-fixtures/images/maptimev0-1-0.png)
+![Screen capture](https://mikeapp.github.io/manifest-fixtures/images/maptimev0-1-11.png)
 
 ## Usage
 
