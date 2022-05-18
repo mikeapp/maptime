@@ -17,8 +17,8 @@ https://mikeapp.github.io/maptime-demo/?collection=https://mikeapp.github.io/man
 If no Manifest within the Collection contains the [`navPlace` property](https://iiif.io/api/extension/navplace/), the map will not be displayed.
 Similarly, if no Manifest contains the [`navDate` property](https://iiif.io/api/presentation/3.0/#navdate), the date range slider will not be displayed. For example:
 
-https://mikeapp.github.io/maptime-demo/?collection=https://iiif.library.utoronto.ca/presentation/v2/collections/anatomia:root
-https://mikeapp.github.io/maptime-demo/?collection=https://www.e-codices.unifr.ch/metadata/iiif/collection/aev.json
+* [Anatomy texts at UToronto](https://mikeapp.github.io/maptime-demo/?collection=https://iiif.library.utoronto.ca/presentation/v2/collections/anatomia:root)
+* [Medieval manuscripts from e-Codices](https://mikeapp.github.io/maptime-demo/?collection=https://www.e-codices.unifr.ch/metadata/iiif/collection/aev.json)
 
 ### Component
 
