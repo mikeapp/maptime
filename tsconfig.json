@@ -22,6 +22,8 @@
     "outDir": "dist"
   },
   "include": [
-    "src"
+    "src/components",
+    "src/iiif",
+    "src/index.ts"
   ]
 }
