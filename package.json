@@ -1,7 +1,8 @@
 {
   "name": "iiif-maptime",
-  "version": "0.1.12",
+  "version": "0.1.16",
   "private": false,
+  "main": "index.js",
   "dependencies": {
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",

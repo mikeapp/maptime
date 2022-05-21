@@ -1,7 +1,6 @@
-import {Collection} from "../iiif/Collection";
 import React, {useEffect, useState} from "react";
-import {Manifest} from "../iiif/Manifest";
-import {AppBar, Box, IconButton, Checkbox, Container, Grid, Toolbar, Typography, Button} from "@mui/material";
+import {Manifest, Collection} from "../index";
+import {Box, Grid, Button} from "@mui/material";
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import MapIcon from '@mui/icons-material/Map';
 import ManifestMapContainer from "./ManifestMapContainer";
@@ -15,7 +14,7 @@ type CollectionMapProperties = {
     viewerPath: string;
 }
 
-const CollectionMap = ({collection, viewerPath}: CollectionMapProperties) => {
+export function CollectionMap({collection, viewerPath}: CollectionMapProperties) {
     const [filterByDate, setFilterByDate] = useState(false);
     const [showMap, setShowMap] = useState(true);
     const [manifests, setManifests] = useState<Array<Manifest>>([]);
@@ -100,9 +99,9 @@ const CollectionMap = ({collection, viewerPath}: CollectionMapProperties) => {
     return (
         <>
             <Box sx={{position:"sticky", top:0, zIndex: 5}}>
-                <Box className="row" hidden={ collectionHasNoNavPlace(collection) || !showMap}>
-                    <ManifestMapContainer manifests={filteredManifests} focus={focusManifest}/>
-                </Box>
+                    <Box className="row" hidden={ collectionHasNoNavPlace(collection) || !showMap }>
+                        <ManifestMapContainer manifests={filteredManifests} focus={focusManifest}/>
+                    </Box>
                 { displayControls() }
             </Box>
 
@@ -123,5 +122,3 @@ const CollectionMap = ({collection, viewerPath}: CollectionMapProperties) => {
     );
 
 }
-
-export default CollectionMap;
