@@ -2,7 +2,7 @@
 
 A React component that displays a [IIIF Presentation API](https://iiif.io/api/presentation/3.0/) [Collection](https://iiif.io/api/presentation/3.0/#51-collection) with a map and timeline. This is currently a work in progress.
 
-A [live demo](https://mikeapp.github.io/maptime-demo/?collection=https://mikeapp.github.io/manifest-fixtures/collection/test.json) and [a demo app](https://github.com/mikeapp/maptime-demo) are available.
+A [live demo](https://mikeapp.github.io/maptime-demo/?iiif-content=https://mikeapp.github.io/manifest-fixtures/collection/test.json) and [a demo app](https://github.com/mikeapp/maptime-demo) are available.
 
 ![Screen capture](https://mikeapp.github.io/manifest-fixtures/images/maptimev0-1-11.png)
 
@@ -10,15 +10,15 @@ A [live demo](https://mikeapp.github.io/maptime-demo/?collection=https://mikeapp
 
 ### Application
 
-Supply the URI of the Collection using the `collection` parameter.  For example:
+Supply the URI of the Collection using the `iiif-content` parameter.  For example:
 
-https://mikeapp.github.io/maptime-demo/?collection=https://mikeapp.github.io/manifest-fixtures/collection/test.json
+https://mikeapp.github.io/maptime-demo/?iiif-content=https://mikeapp.github.io/manifest-fixtures/collection/test.json
 
 If no Manifest within the Collection contains the [`navPlace` property](https://iiif.io/api/extension/navplace/), the map will not be displayed.
 Similarly, if no Manifest contains the [`navDate` property](https://iiif.io/api/presentation/3.0/#navdate), the date range slider will not be displayed. For example:
 
-* [Anatomy texts at UToronto](https://mikeapp.github.io/maptime-demo/?collection=https://iiif.library.utoronto.ca/presentation/v2/collections/anatomia:root)
-* [Medieval manuscripts from e-Codices](https://mikeapp.github.io/maptime-demo/?collection=https://www.e-codices.unifr.ch/metadata/iiif/collection/aev.json)
+* [Anatomy texts at UToronto](https://mikeapp.github.io/maptime-demo/?iiif-content=https://iiif.library.utoronto.ca/presentation/v2/collections/anatomia:root)
+* [Medieval manuscripts from e-Codices](https://mikeapp.github.io/maptime-demo/?iiif-content=https://www.e-codices.unifr.ch/metadata/iiif/collection/aev.json)
 
 ### Component
 
