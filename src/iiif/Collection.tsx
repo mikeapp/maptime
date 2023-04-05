@@ -24,6 +24,8 @@ export class Collection {
         for (let i = 0; i < ids.length; i++) {
             await fetch(ids[i]).then(r => r.json()).then(doc => {
                 jsonDocs[i] = doc;
+                progress = progress + Math.round(100 / ids.length);
+                if (setProgress) setProgress(progress);
                 return this.vault.loadManifest(ids[i], doc);
             }).then(mn => this.allManifests.push(new Manifest(mn!, jsonDocs[i])));
         }
