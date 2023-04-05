@@ -1,6 +1,7 @@
 import { Vault } from "@iiif/vault";
 import { CollectionNormalized } from "@iiif/presentation-3";
 import { Manifest } from "./Manifest";
+import {getValue} from "@iiif/vault-helpers";
 
 export class Collection {
     uri: string;
@@ -27,6 +28,10 @@ export class Collection {
             }).then(mn => this.allManifests.push(new Manifest(mn!, jsonDocs[i])));
         }
         return this.collection
+    }
+
+    label() {
+        return getValue(this.collection?.label);
     }
 
     manifests() {

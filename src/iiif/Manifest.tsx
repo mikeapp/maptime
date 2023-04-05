@@ -6,11 +6,13 @@ export class Manifest {
     uri: string;
     iiif: null | ManifestNormalized;
     json: any = {};
+    vault: Vault;
 
-    constructor(manifest: ManifestNormalized, json: {} ){
+    constructor(manifest: ManifestNormalized, json: {}, vault: Vault = new Vault() ){
         this.uri = manifest.id;
         this.iiif = manifest;
         this.json = json;
+        this.vault = vault;
     }
 
     navPlace() : any | null {
@@ -36,13 +38,15 @@ export class Manifest {
         return getValue(this.iiif?.label);
     }
 
-    thumb(width: number): string {
-        const canvas = this?.json['items'][0];
-        const alist  = canvas['items'][0];
-        const anno = alist['items'][0];
-        const service = anno['body']['service'][0];
-        const id: string = service['id'] || service['@id'] !;
-        const url = id + "/full/" + width + ",/0/default.jpg";
-        return url;
+    async thumb(width: number): Promise<string> {
+        const helper = createThumbnailHelper(this.vault);
+        if (!this.iiif) return "";
+        let thumbnailUri = "";
+        await this.vault.loadManifest(this.uri)
+            .then(async manifest => {
+                const t = await helper.getBestThumbnailAtSize(manifest, { width: 256, height: 256 });
+                if (t.best) thumbnailUri = t.best.id || "";
+            });
+        return thumbnailUri;
     }
 }

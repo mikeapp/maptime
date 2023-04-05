@@ -41,5 +41,9 @@ describe("Collection", () => {
         expect(c?.features().length).toBe(4);
     })
 
+    test("has a label", () => {
+        expect(c?.label()).toBeDefined();
+    })
+
 
 })

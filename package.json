@@ -1,6 +1,6 @@
 {
   "name": "iiif-maptime",
-  "version": "0.1.17",
+  "version": "0.1.21",
   "private": false,
   "main": "index.js",
   "dependencies": {

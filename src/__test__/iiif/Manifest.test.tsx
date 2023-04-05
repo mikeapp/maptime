@@ -11,6 +11,7 @@ import {
     ImageService
 } from "@iiif/presentation-3";
 import {createThumbnailHelper} from "@iiif/vault-helpers";
+import {waitFor} from "@testing-library/react";
 
 describe("Manifest", () => {
 
@@ -28,10 +29,5 @@ describe("Manifest", () => {
         expect(manifestNormalized.id).toBe(id);
         expect(manifest.uri).toBe(id);
     })
-
-    test("computes thumbnail", async() => {
-        console.log( manifest.thumb(500));
-    })
-
 });
 
