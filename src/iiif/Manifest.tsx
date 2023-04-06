@@ -1,31 +1,26 @@
-import {Deserialiser, Manifest as ManifestoManifest, Thumb, Utils} from "manifesto.js";
+import { Vault } from "@iiif/vault";
+import { getValue, createThumbnailHelper } from '@iiif/vault-helpers';
+import {Canvas, ManifestNormalized, Reference} from "@iiif/presentation-3";
 
 export class Manifest {
     uri: string;
-    iiif: null | ManifestoManifest;
+    iiif: null | ManifestNormalized;
     json: any = {};
+    vault: Vault;
 
-    constructor(uri: string) {
-        this.uri = uri;
-        this.iiif = null;
-    }
-
-    async fetch() {
-        const response = await fetch(this.uri);
-        const json = await response.json();
-        this.iiif = Deserialiser.parseManifest(json);
+    constructor(manifest: ManifestNormalized, json: {}, vault: Vault = new Vault() ){
+        this.uri = manifest.id;
+        this.iiif = manifest;
         this.json = json;
-        return this.iiif;
+        this.vault = vault;
     }
 
-    navPlace() {
-        const feature = this.json['navPlace']?.['features']?.[0];
-        if (feature === null || feature === undefined) return null;
-        return this.json['navPlace'];
+    navPlace() : any | null {
+        return this.json?.['navPlace'];
     }
 
     navDate() {
-        let dateString = this.json['navDate'];
+        let dateString = this.iiif?.navDate;
         let date: Date | null = null;
         if (dateString) {
             date = new Date(dateString);
@@ -40,23 +35,18 @@ export class Manifest {
     }
 
     label() {
-        let label = this.iiif?.getDefaultLabel();
-        if (typeof(label) === 'string') {
-            return label;
-        } else {
-            return "";
-        }
+        return getValue(this.iiif?.label);
     }
 
-    thumb(width:number) {
-        const canvas = this.iiif?.getSequenceByIndex(0).getCanvases()[0];
-        if (canvas) {
-            // This fails for Princeton manifests
-            let thumb = new Thumb(width, canvas);
-            if (thumb.uri.startsWith('http')) return thumb.uri;
-            // Get thumb
-            let id = canvas.getContent()[0].__jsonld['body']['service'][0].id
-            return id + "/full/" + width + ",/0/default.jpg";
-        }
+    async thumb(width: number): Promise<string> {
+        const helper = createThumbnailHelper(this.vault);
+        if (!this.iiif) return "";
+        let thumbnailUri = "";
+        await this.vault.loadManifest(this.uri)
+            .then(async manifest => {
+                const t = await helper.getBestThumbnailAtSize(manifest, { width: 256, height: 256 });
+                if (t.best) thumbnailUri = t.best.id || "";
+            });
+        return thumbnailUri;
     }
 }

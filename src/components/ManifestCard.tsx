@@ -1,5 +1,5 @@
 import {Box, Button, Card, CardActionArea, CardContent, CardMedia, IconButton, Typography} from "@mui/material";
-import React from "react";
+import React, {useEffect, useState} from "react";
 import {Manifest} from "../iiif/Manifest";
 import MapIcon from '@mui/icons-material/Map';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
@@ -15,9 +15,15 @@ type ManifestCardProps = {
 
 const ManifestCard = ({manifest, onSelect, isSelected, onShowInViewer}: ManifestCardProps) => {
 
+    const [thumbnailUrl, setThumbnailUrl] = useState("");
+
+    useEffect(() => {
+        manifest.thumb(300).then(t => setThumbnailUrl(t));
+    }, [manifest]);
+
     const cardMedia = () => <CardMedia
         component="img"
-        image={manifest?.thumb(300)}
+        image={thumbnailUrl}
         alt={manifest.label()}
         height={170}
         key={manifest.uri}

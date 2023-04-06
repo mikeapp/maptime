@@ -1,33 +1,43 @@
-import {Collection as ManifestoCollection, Deserialiser, Utils} from "manifesto.js";
-import {Manifest} from "./Manifest";
+import { Vault } from "@iiif/vault";
+import { CollectionNormalized } from "@iiif/presentation-3";
+import { Manifest } from "./Manifest";
+import {getValue} from "@iiif/vault-helpers";
 
 export class Collection {
     uri: string;
-    iiif: null | ManifestoCollection;
+    collection: CollectionNormalized | null;
     allManifests: Manifest[] = [];
+    vault: Vault;
 
-    constructor(uri: string) {
+    constructor(uri: string, vault = new Vault()) {
         this.uri = uri;
-        this.iiif = null;
+        this.collection = null;
+        this.vault = vault;
     }
 
-    async fetch(setProgress?: (percent: number) => void) {
+    async fetch(setProgress?: (percent: number) => void):  Promise<CollectionNormalized | null> {
         let progress = 0;
+        let jsonDocs: any[] = [];
         if (setProgress) setProgress(progress);
-        const response = await fetch(this.uri);
-        const json = await response.json();
-        this.iiif = Deserialiser.parseCollection(json);
-        let manifestCount = this.iiif.getManifests().length;
-        this.allManifests = this.iiif.getManifests().map(m => new Manifest(m.id));
-        await Promise.all(this.allManifests.map(m => m.fetch().then(() => {
-            progress = progress + Math.round(100 / manifestCount)
-            if (setProgress) setProgress(progress);
-        })));
-        return this.iiif;
+        await this.vault.loadCollection(this.uri).then((cn) => this.collection = cn!);
+        const ids = this?.collection?.items?.map(item => item.id) || [];
+        for (let i = 0; i < ids.length; i++) {
+            await fetch(ids[i]).then(r => r.json()).then(doc => {
+                jsonDocs[i] = doc;
+                progress = progress + Math.round(100 / ids.length);
+                if (setProgress) setProgress(progress);
+                return this.vault.loadManifest(ids[i], doc);
+            }).then(mn => this.allManifests.push(new Manifest(mn!, jsonDocs[i])));
+        }
+        return this.collection
+    }
+
+    label() {
+        return getValue(this.collection?.label);
     }
 
     manifests() {
-        return this.allManifests || [];
+        return this.allManifests;
     }
 
     features() {

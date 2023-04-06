@@ -1,0 +1,46 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "id": "https://mikeapp.github.io/manifest-fixtures/collection/rome.json",
+  "type": "Collection",
+  "label": { "en": [ "Rome Collection" ] },
+  "summary": { "en": [ "A collection of items related to Rome." ] },
+  "requiredStatement": {
+    "label": { "en": [ "Attribution" ] },
+    "value": { "en": [ "Items from Yale University" ] }
+  },
+
+  "items": [
+    {
+      "id": "https://mikeapp.github.io/manifest-fixtures/manifest/1012.json",
+      "type": "Manifest"
+    },
+    {
+      "id": "https://mikeapp.github.io/manifest-fixtures/manifest/15493197.json",
+      "type": "Manifest"
+    },
+    {
+      "id": "https://mikeapp.github.io/manifest-fixtures/manifest/2056645.json",
+      "type": "Manifest"
+    },
+    {
+      "id": "https://mikeapp.github.io/manifest-fixtures/manifest/2056646.json",
+      "type": "Manifest"
+    },
+    {
+      "id": "https://mikeapp.github.io/manifest-fixtures/manifest/2006140.json",
+      "type": "Manifest"
+    },
+    {
+      "id": "https://collections.library.yale.edu/manifests/10996685",
+      "type": "Manifest"
+    },
+    {
+      "id": "https://collections.library.yale.edu/manifests/16209721",
+      "type": "Manifest"
+    },
+    {
+      "id": "https://manifests.collections.yale.edu/yuag/obj/34129",
+      "type": "Manifest"
+    }
+  ]
+}
